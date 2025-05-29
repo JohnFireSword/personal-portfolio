@@ -9,10 +9,13 @@ html,
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: black;
-  color: white;
+ 
   scroll-behavior: smooth;
   font-family: "Mona Sans", sans-serif;
+  
+  color: rgb(var(--foreground-rgb));
+  background-color: #0d1224;
+
 }
 
 section {
@@ -32,6 +35,7 @@ section {
   --color-pink-50: #f626af;
   --color-blue-150: #0025ba;
   --color-pink-20: #f626af;
+  --color-pink-500: rgb(236 72 153);
     
      
 }
@@ -92,7 +96,7 @@ section {
   }
 
   .hero-text {
-    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold relative z-10 pointer-events-none;
+    @apply flex flex-col justify-center md:text-[60px] text-[30px] font-semibold text-white  relative z-10 pointer-events-none;
     img {
       @apply size-8 md:size-10 object-contain;
     }

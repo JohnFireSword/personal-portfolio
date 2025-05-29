@@ -5,8 +5,8 @@ import { words } from "../constants";
 const Hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden">
-      <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="background" />
+      <div className="absolute top-0 left-0 z-10 flex">
+        <img src="/section.svg" alt="background" />
       </div>
 
       <div className="hero-layout">
@@ -37,7 +37,7 @@ const Hero = () => {
               <h1>into real projects</h1>
               <h1>that deliver results</h1>
             </div>
-            <p className="text-pink-50 md:text-xl relative z-10 pointer-events-none">
+            <p className="text-pink-500 md:text-xl relative z-10 pointer-events-none">
               Hi, I'm John, a Full Stack Developer from Greece
             </p>
             <Button

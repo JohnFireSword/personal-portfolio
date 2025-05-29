@@ -1,32 +1,31 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React from "react";
+
 import { useMediaQuery } from "react-responsive";
-import { Room } from "./Room";
 import { Dog } from "./Little-dog";
 import HeroLights from "./HeroLights";
+import { GamingRoom } from "./Gaming_desktop_pc";
 
 function HeroExperience() {
   const isTablet = useMediaQuery({ query: "max-width: 1024px" });
   const isMobile = useMediaQuery({ query: "max-width: 768px" });
 
   return (
-    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+    <Canvas camera={{ position: [150, 15, 15], fov: 50 }}>
       <OrbitControls
         enablePan={false}
         enableZoom={!isTablet}
-        maxDistance={20}
-        minDistance={5}
+        maxDistance={25}
+        minDistance={10}
         minPolarAngle={Math.PI / 5}
-        maxPolarAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 3}
       />
       <HeroLights></HeroLights>
       <group
         scale={isMobile ? 0.7 : 1}
         position={[0, -3.5, 0]}
         rotation={[0, -Math.PI / 4, 0]}></group>
-
-      <Dog />
+      <GamingRoom />
     </Canvas>
   );
 }
