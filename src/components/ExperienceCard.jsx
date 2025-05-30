@@ -1,6 +1,7 @@
 import React from 'react';
 import GlowCard from './GlowingCard';
 
+
 const ExperienceCard = ({ experience, index, isActive, onClick }) => {
   return (
     <div

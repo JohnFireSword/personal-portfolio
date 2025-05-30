@@ -78,6 +78,14 @@ function FeaturedTraitsCards() {
     });
   }, []);
 
+
+    const renderIcon = (iconName) => {
+    const IconComponent = iconMap[iconName];
+    if (!IconComponent) return null;
+    return <IconComponent className="w-8 h-8" />;
+  };
+
+
   return (
     <section 
       ref={containerRef}
@@ -165,8 +173,8 @@ function FeaturedTraitsCards() {
                     bg-gradient-to-br ${trait.bgColor} border border-white-50/10
                     group-hover:scale-110 transition-transform duration-300
                   `}>
-                    <div className={`bg-gradient-to-r ${trait.color} bg-clip-text text-transparent`}>
-                      {React.createElement(iconMap[trait.icon], { className: "w-8 h-8" })}
+                   <div className="text-pink-400">
+                      {renderIcon(trait.icon)}
                     </div>
                   </div>
                   
