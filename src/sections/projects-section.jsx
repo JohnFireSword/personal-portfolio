@@ -4,9 +4,8 @@ import { projects, projectCategories } from "../constants/projects";
 const PhoneMockup = React.memo(({ project, isActive }) => {
   return (
     <div
-      className={`relative will-change-transform transition-all duration-700 ${
-        isActive ? "scale-105" : "scale-95 opacity-70"
-      }`}>
+      className={`relative will-change-transform transition-all duration-700 scale-80
+      `}>
       {/* iPhone Frame with Enhanced Realism */}
       <div className="relative mx-auto w-72 h-[580px]">
         {/* Enhanced Glow Effect */}

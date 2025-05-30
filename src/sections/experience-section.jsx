@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { experiences } from "../constants/experiences";
 import GlowCard from "../components/GlowingCard";
+import StatCards from "../components/StatCards";
 
 // ExperienceCard Component
 const ExperienceCard = ({ experience, index, isActive, onClick }) => {
@@ -9,7 +10,8 @@ const ExperienceCard = ({ experience, index, isActive, onClick }) => {
       className={`relative cursor-pointer transform transition-all duration-500 hover:scale-105 ${
         isActive ? "scale-105" : ""
       }`}
-      onClick={() => onClick(index)}>
+      onClick={() => onClick(index)}
+    >
       {/* Floating Background Circle */}
       <div
         className={`absolute -inset-4 bg-gradient-to-r ${
@@ -25,12 +27,14 @@ const ExperienceCard = ({ experience, index, isActive, onClick }) => {
           className={`relative bg-gray-900 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 transition-all duration-300 ${
             isActive ? "border-pink-500/50 shadow-2xl shadow-pink-500/10" : ""
           }`}
-          style={{ borderRadius: "12px" }}>
+          style={{ borderRadius: "12px" }}
+        >
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-3">
               <div
-                className={`text-3xl bg-gradient-to-r ${experience.color} bg-clip-text text-transparent`}>
+                className={`text-3xl bg-gradient-to-r ${experience.color} bg-clip-text text-transparent`}
+              >
                 {experience.icon}
               </div>
               <div>
@@ -57,7 +61,8 @@ const ExperienceCard = ({ experience, index, isActive, onClick }) => {
             {experience.technologies.map((tech, i) => (
               <span
                 key={i}
-                className="text-xs bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 px-3 py-1 rounded-full border border-blue-500/30">
+                className="text-xs bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-200 px-3 py-1 rounded-full border border-blue-500/30"
+              >
                 {tech}
               </span>
             ))}
@@ -67,7 +72,8 @@ const ExperienceCard = ({ experience, index, isActive, onClick }) => {
           <div
             className={`transition-all duration-300 overflow-hidden ${
               isActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-            }`}>
+            }`}
+          >
             <div className="pt-4 border-t border-gray-700">
               <h4 className="text-pink-500 font-semibold mb-2 flex items-center gap-2">
                 ✨ Key Achievements
@@ -76,7 +82,8 @@ const ExperienceCard = ({ experience, index, isActive, onClick }) => {
                 {experience.achievements.map((achievement, i) => (
                   <li
                     key={i}
-                    className="text-gray-300 text-sm flex items-center gap-2">
+                    className="text-gray-300 text-sm flex items-center gap-2"
+                  >
                     <div
                       className={`w-2 h-2 rounded-full bg-gradient-to-r ${experience.color}`}
                     />
@@ -108,7 +115,8 @@ const Timeline = ({ experiences, activeIndex, scrollProgress }) => {
       {/* Animated Progress Line */}
       <div
         className="absolute left-8 top-0 w-0.5 bg-gradient-to-b from-pink-500 via-purple-100 to-blue-150 transition-all duration-300 ease-out"
-        style={{ height: `${scrollProgress * 100}%` }}></div>
+        style={{ height: `${scrollProgress * 100}%` }}
+      ></div>
 
       {/* Timeline Dots */}
       <div className="space-y-8">
@@ -127,7 +135,8 @@ const Timeline = ({ experiences, activeIndex, scrollProgress }) => {
                   activeIndex === index
                     ? "ring-2 ring-pink-500/50 ring-offset-2 ring-offset-black-100"
                     : ""
-                }`}>
+                }`}
+              >
                 {isReached && (
                   <div className="absolute inset-0 rounded-full bg-pink-500 animate-ping opacity-75"></div>
                 )}
@@ -135,7 +144,8 @@ const Timeline = ({ experiences, activeIndex, scrollProgress }) => {
               <div
                 className={`ml-16 font-medium transition-all duration-500 ${
                   isReached ? "text-blue-50" : "text-gray-500"
-                }`}>
+                }`}
+              >
                 {experiences[index].period}
               </div>
             </div>
@@ -205,7 +215,8 @@ function ExperienceSection() {
   return (
     <div
       id="experience"
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]"
+    >
       <img
         src="/section.svg"
         alt="Hero"
@@ -225,7 +236,8 @@ function ExperienceSection() {
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 4}s`,
               animationDuration: `${2 + Math.random() * 3}s`,
-            }}></div>
+            }}
+          ></div>
         ))}
       </div>
 
@@ -249,7 +261,8 @@ function ExperienceSection() {
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
-              }`}>
+              }`}
+            >
               <h3 className="text-2xl font-bold text-white-50 mb-8 flex items-center gap-3">
                 <span className="text-pink-500">🎯</span>
                 Career Journey
@@ -263,7 +276,7 @@ function ExperienceSection() {
           </div>
 
           {/* Experience Cards */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 mb-32">
             <div className="space-y-6">
               {experiences.map((experience, index) => (
                 <div
@@ -273,7 +286,8 @@ function ExperienceSection() {
                       ? "translate-x-0 opacity-100"
                       : "translate-x-10 opacity-0"
                   }`}
-                  style={{ transitionDelay: `${index * 150}ms` }}>
+                  style={{ transitionDelay: `${index * 150}ms` }}
+                >
                   <ExperienceCard
                     experience={experience}
                     index={index}
@@ -300,32 +314,8 @@ function ExperienceSection() {
             </div>
           </div>
         </div>
-
-        {/* Fun Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { value: "4+", label: "Years Experience", icon: "⭐" },
-            { value: "50+", label: "Projects Built", icon: "🚀" },
-            { value: "15+", label: "Technologies", icon: "💻" },
-            { value: "100%", label: "Client Satisfaction", icon: "❤️" },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className={`text-center p-4 bg-black-100/50 rounded-xl border border-gray-700 hover:border-pink-500/30 transition-all duration-300 ${
-                isVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-5 opacity-0"
-              }`}
-              style={{ transitionDelay: `${index * 100 + 800}ms` }}>
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-2xl font-bold text-pink-500">
-                {stat.value}
-              </div>
-              <div className="text-gray-400 text-sm">{stat.label}</div>
-            </div>
-          ))}
-        </div>
       </div>
+      <StatCards />
     </div>
   );
 }
