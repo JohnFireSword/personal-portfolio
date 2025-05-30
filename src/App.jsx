@@ -1,3 +1,4 @@
+import LogoSection from "./components/LogoSection";
 import Navbar from "./components/Navbar";
 import ExperienceSection from "./sections/experience-section";
 import Hero from "./sections/hero-section";
@@ -10,6 +11,7 @@ const App = () => {
       <Hero />
       <ExperienceSection/>
       <ProjectsSection/>
+      <LogoSection/>
     </>
     
   );
