@@ -2,7 +2,7 @@
 export const projects = [
   {
     id: 1,
-    title: "EcoTracker Mobile App",
+    title: "iServices Hub App",
     category: "Mobile App",
     description: "A React Native app that helps users track their carbon footprint with gamification elements and social sharing features.",
     longDescription: "EcoTracker revolutionizes personal sustainability by making environmental consciousness engaging and social. Users can log daily activities, see real-time impact visualizations, and compete with friends through eco-challenges.",
@@ -13,11 +13,12 @@ export const projects = [
       "AI-powered suggestions",
       "Offline data synchronization"
     ],
-    displayType: "mobile", // mobile, desktop, or both
+    displayType: "mobile",
     images: {
-      mobile: "/project-mobile-1.jpg", // Replace with your actual image paths
+      mobile: "/project-mobile-1.jpg", 
       desktop: "/project-desktop-1.jpg"
     },
+    screenshot: "public/images/insta.png",
     demoUrl: "https://ecotracker-demo.com",
     githubUrl: "https://github.com/johndoe/ecotracker",
     status: "Live",
