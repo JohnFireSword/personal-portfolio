@@ -14,14 +14,11 @@ export const projects = [
       "Offline data synchronization"
     ],
     displayType: "mobile",
-    images: {
-      mobile: "/project-mobile-1.jpg", 
-      desktop: "/project-desktop-1.jpg"
-    },
-    screenshot: "public/images/insta.png",
+ 
+    screenshot: "public/images/mockups/hub-main-screen-screenshot.png",
     demoUrl: "https://ecotracker-demo.com",
     githubUrl: "https://github.com/johndoe/ecotracker",
-    status: "Live",
+   
     color: "from-green-400 to-emerald-600",
     accent: "#10b981"
   },
