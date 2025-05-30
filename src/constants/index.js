@@ -37,40 +37,28 @@ const counterItems = [
 ];
 
 const logoIconsList = [
-  {
-    imgPath: "/images/logos/company-logo-1.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-2.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-3.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-4.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-5.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-6.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-7.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-8.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-9.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
-  },
+  { name: 'HTML', imgPath: 'public/images/svg/skills/html.svg' },
+  { name: 'CSS', imgPath: 'public/images/svg/skills/css.svg' },
+  { name: 'Javascript', imgPath: 'public/images/svg/skills/javascript.svg' },
+  { name: 'Typescript', imgPath: 'public/images/svg/skills/typescript.svg' },
+  { name: 'React', imgPath: 'public/images/svg/skills/react.svg' },
+  { name: 'Next JS', imgPath: 'public/images/svg/skills/nextjs.svg' },
+  { name: 'Tailwind', imgPath: 'public/images/svg/skills/tailwind.svg' },
+  { name: 'MongoDB', imgPath: 'public/images/svg/skills/mongodb.svg' },
+  { name: 'MySQL', imgPath: 'public/images/svg/skills/mysql.svg' },
+  { name: 'PostgreSQL', imgPath: 'public/images/svg/skills/postgresql.svg' },
+  { name: 'Git', imgPath: 'public/images/svg/skills/git.svg' },
+  { name: 'AWS', imgPath: 'public/images/svg/skills/aws.svg' },
+  { name: 'Bootstrap', imgPath: 'public/images/svg/skills/bootstrap.svg' },
+  { name: 'Docker', imgPath: 'public/images/svg/skills/docker.svg' },
+  { name: 'Go', imgPath: 'public/images/svg/skills/go.svg' },
+  { name: 'Figma', imgPath: 'public/images/svg/skills/figma.svg' },
+  { name: 'Firebase', imgPath: 'public/images/svg/skills/firebase.svg' },
+  { name: 'MaterialUI', imgPath: 'public/images/svg/skills/materialui.svg' },
+  { name: 'Nginx', imgPath: 'public/images/svg/skills/nginx.svg' },
+  { name: 'Strapi', imgPath: 'public/images/svg/skills/strapi.svg' },
 ];
+
 
 const abilities = [
   {

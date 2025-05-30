@@ -1,4 +1,4 @@
-import LogoSection from "./components/LogoSection";
+import LogoSection from "./sections/LogoSection";
 import Navbar from "./components/Navbar";
 import ExperienceSection from "./sections/experience-section";
 import Hero from "./sections/hero-section";
