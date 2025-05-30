@@ -1,8 +1,9 @@
 import LogoSection from "./sections/LogoSection";
 import Navbar from "./components/Navbar";
-import ExperienceSection from "./sections/experience-section";
-import Hero from "./sections/hero-section";
-import ProjectsSection from "./sections/projects-section";
+import ExperienceSection from "./sections/ExperienceSection";
+import Hero from "./sections/HeroSection";
+import ProjectsSection from "./sections/ProjectsSection";
+import FeaturedTraitsCards from "./sections/FeaturesSection";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <ExperienceSection/>
       <ProjectsSection/>
       <LogoSection/>
+      <FeaturedTraitsCards/>
     </>
     
   );

@@ -4,7 +4,7 @@ import HeroExperience from "../components/HeroModels/HeroExperience";
 import { words } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
-import ExperienceSection from "./experience-section";
+import ExperienceSection from "./ExperienceSection";
 
 const Hero = () => {
   useGSAP(()=>{

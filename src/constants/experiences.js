@@ -2,10 +2,10 @@
 export const experiences = [
   {
     id: 1,
-    title: "Senior Full Stack Developer",
-    company: "Tech Innovators Inc.",
-    period: "2023 - Present",
-    location: "Remote",
+    title: "Junior Full Stack Developer",
+    company: "iServices",
+    period: "2024 - present",
+    location: "Thessaloniki, Greece",
     description: "Led development of scalable web applications using React, Node.js, and AWS. Mentored junior developers and implemented CI/CD pipelines.",
     technologies: ["React", "Node.js", "AWS", "PostgreSQL", "Docker"],
     achievements: [
