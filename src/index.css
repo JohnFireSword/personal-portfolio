@@ -106,7 +106,7 @@ section {
   }
 
   .hero-badge {
-    @apply bg-black-200 py-2 px-4 rounded-full w-fit text-sm md:text-base text-nowrap;
+    @apply bg-[#1a1443] py-2 px-4 rounded-full w-fit text-sm md:text-base text-nowrap mt-8;
   }
 
   .hero-3d-layout {
@@ -250,11 +250,11 @@ section {
   }
 
   .timeline-wrapper {
-    @apply absolute top-0 xl:left-[35.5vw] md:left-10 left-5 h-full flex justify-center;
+    @apply  top-0 xl:left-[35.5vw]  h-full flex justify-center;
   }
 
   .timeline {
-    @apply absolute z-30 h-[110%] -top-10 w-14 md:w-28 bg-black;
+    @apply absolute z-30 h-[110%] -top-10 w-14 md:w-28 bg-[#0d1224];
   }
 
   .timeline-logo {

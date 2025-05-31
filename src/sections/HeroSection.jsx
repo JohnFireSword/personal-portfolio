@@ -4,10 +4,15 @@ import HeroExperience from "../components/HeroModels/HeroExperience";
 import { words } from "../constants";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
-import ExperienceSection from "./ExperienceSection";
+
+
+
 
 const Hero = () => {
+
+
   useGSAP(()=>{
+
   gsap.fromTo('.hero-text h1',{
     y: 60, opacity:0,
   },{

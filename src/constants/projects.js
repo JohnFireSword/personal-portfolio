@@ -15,7 +15,7 @@ export const projects = [
     ],
     displayType: "mobile",
  
-    screenshot: "public/images/mockups/hub-main-screen-screenshot.png",
+    screenshot: "images/mockups/hub-main-screen-screenshot.png",
     demoUrl: "https://ecotracker-demo.com",
     githubUrl: "https://github.com/johndoe/ecotracker",
    

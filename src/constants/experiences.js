@@ -14,7 +14,9 @@ export const experiences = [
       "Deployed 12+ production applications"
     ],
     color: "from-pink-500 to-purple-100",
-    icon: "💻"
+    icon: "💻",
+    imgPath: "/images/exp2.png",
+    logoPath: "/images/logo3.png",
   },
   {
     id: 2,
@@ -30,7 +32,8 @@ export const experiences = [
       "Built 25+ responsive components"
     ],
     color: "from-blue-150 to-blue-50",
-    icon: "🎨"
+    icon: "🎨",
+    logoPath: "/images/logo3.png",
   },
   {
     id: 3,
@@ -46,7 +49,8 @@ export const experiences = [
       "Established coding best practices"
     ],
     color: "from-pink-100 to-pink-20",
-    icon: "🚀"
+    icon: "🚀",
+    logoPath: "/images/logo3.png",
   },
   {
     id: 4,
@@ -62,7 +66,8 @@ export const experiences = [
       "Published research paper"
     ],
     color: "from-purple-100 to-blue-100",
-    icon: "🎓"
+    icon: "🎓",
+   logoPath: "/images/logo3.png",
   }
 ];
 
