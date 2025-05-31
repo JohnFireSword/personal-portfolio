@@ -21,8 +21,13 @@ const Experience = () => {
         trigger: card,
         start: "top 80%",
         end: "bottom 30%",
-        onEnter: () => setScrollActiveId(cardId),
-        onLeaveBack: () => setScrollActiveId(null),
+        onEnter: () => {
+          setClickActiveId(null);
+          setScrollActiveId(cardId);
+        },
+        onLeaveBack: () => {
+          setScrollActiveId(null);
+        },
       });
     });
   }, []);
@@ -63,7 +68,7 @@ const Experience = () => {
     <section
       id="experience"
       className="relative  w-full md:mt-30 mt-20 section-padding xl:px-0">
-      <div className="absolute top-0 left-0 z-10 flex">
+      <div className="absolute top-0 left-0  flex">
         <img src="/section.svg" alt="background" />
       </div>
       <div className="w-full h-full md:px-20 px-5">
@@ -96,8 +101,9 @@ const Experience = () => {
                     <ExperienceCard
                       experience={card}
                       isActive={
-                        clickActiveId === card.id ||
-                        scrollActiveId === String(card.id)
+                        clickActiveId !== null
+                          ? clickActiveId === card.id
+                          : scrollActiveId === String(card.id)
                       }
                       onClick={() =>
                         setClickActiveId((prev) =>

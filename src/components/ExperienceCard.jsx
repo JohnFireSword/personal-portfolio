@@ -3,20 +3,20 @@ import GlowCard from './GlowingCard'
 
 const ExperienceCard = ({ experience, isActive, onClick }) => {
   return (
-    <div
-      className={`relative cursor-pointer transform transition-all duration-500 hover:scale-105 ${
-        isActive ? "scale-105" : ""
-      }`}
-      onClick={() => onClick()}
-    >
-      {/* Floating Background Circle */}
-      <div
-        className={`absolute -inset-4 bg-gradient-to-r ${
-          experience.color || 'from-pink-500 to-purple-500'
-        } rounded-full opacity-10 blur-xl transition-opacity duration-300 ${
-          isActive ? "opacity-20" : "opacity-5"
-        }`}
-      />
+   <div
+  className={`relative cursor-pointer transform transition-all duration-500 hover:scale-105 ${
+    isActive ? "scale-105" : ""
+  }`}
+  onClick={() => onClick()}
+>
+  {/* Floating Background Circle */}
+  <div
+    className={`pointer-events-none absolute -inset-4 bg-gradient-to-r ${
+      experience.color || 'from-pink-500 to-purple-500'
+    } rounded-full opacity-10 blur-xl transition-opacity duration-300 ${
+      isActive ? "opacity-20" : "opacity-5"
+    }`}
+  />
 
       {/* Main Card with Glow Effect */}
       <GlowCard identifier={`experience-${experience.id}`}>
