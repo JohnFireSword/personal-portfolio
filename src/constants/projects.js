@@ -14,8 +14,8 @@ export const projects = [
       "Offline data synchronization"
     ],
     displayType: "mobile",
- 
-    screenshot: "images/mockups/hub-main-screen-screenshot.png",
+ mockupImage: "images/mockups/services-hub-clean.png",
+    screenshot: "images/mockups/services-hub-clean.png",
     demoUrl: "https://ecotracker-demo.com",
     githubUrl: "https://github.com/johndoe/ecotracker",
    
@@ -58,6 +58,7 @@ export const projects = [
       "DeFi protocol access",
       "Advanced security features"
     ],
+    mockupImage: "/images/mockups/crypto-app.png",
     displayType: "mobile",
     images: {
       mobile: "/project-mobile-3.jpg"
@@ -137,7 +138,29 @@ export const projects = [
     status: "Live",
     color: "from-indigo-500 to-blue-600",
     accent: "#6366f1"
-  }
+  },
+   {
+    id: 7,
+    title: "CorfuBee",
+    category: "Mobile App",
+    description: "A React Native app that helps users track their carbon footprint with gamification elements and social sharing features.",
+    longDescription: "EcoTracker revolutionizes personal sustainability by making environmental consciousness engaging and social. Users can log daily activities, see real-time impact visualizations, and compete with friends through eco-challenges.",
+    technologies: ["React Native", "Node.js", "MongoDB", "Socket.io", "Expo"],
+    features: [
+      "Real-time carbon footprint calculation",
+      "Social challenges and leaderboards",
+      "AI-powered suggestions",
+      "Offline data synchronization"
+    ],
+    displayType: "mobile",
+ mockupImage: "images/mockups/corfu-bee-new.png",
+
+    demoUrl: "https://ecotracker-demo.com",
+    githubUrl: "https://github.com/johndoe/ecotracker",
+   
+    color: "from-green-400 to-emerald-600",
+    accent: "#10b981"
+  },
 ];
 
 export const projectCategories = [
