@@ -72,11 +72,11 @@ const TitleHeader = ({ title, sub }) => {
   return (
     <div
       ref={containerRef}
-      className="title-header-container flex flex-col items-center gap-8">
+      className="title-header-container flex flex-col items-center gap-6 pt-12">
       {/* Elegant Badge */}
       <div
         ref={badgeRef}
-        className="title-header-badge relative overflow-hidden rounded-full px-6 py-3 backdrop-blur-sm border border-pink-500/20">
+        className="title-header-badge relative overflow-hidden rounded-full px-6 py-3 backdrop-blur-sm border border-pink-500/20  shadow-lg shadow-black-500/20">
         <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10" />
         <div className="absolute inset-0 bg-gradient-to-r from-pink-500/5 to-purple-500/5 animate-pulse" />
         <p className="relative z-10 text-pink-200 text-sm font-light tracking-wide">

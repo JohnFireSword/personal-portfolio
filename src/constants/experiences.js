@@ -16,7 +16,7 @@ export const experiences = [
     color: "from-pink-500 to-purple-100",
     icon: "💻",
     imgPath: "/images/exp2.png",
-    logoPath: "/images/svg/skills/firebase.svg",
+    logoPath: "/images/svg/skills/dart.svg",
   },
   {
     id: 2,
