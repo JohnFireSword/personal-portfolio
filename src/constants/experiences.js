@@ -16,7 +16,7 @@ export const experiences = [
     color: "from-pink-500 to-purple-100",
     icon: "💻",
     imgPath: "/images/exp2.png",
-    logoPath: "/images/logo3.png",
+    logoPath: "/images/svg/skills/firebase.svg",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const experiences = [
     ],
     color: "from-blue-150 to-blue-50",
     icon: "🎨",
-    logoPath: "/images/logo3.png",
+  logoPath: "/images/svg/skills/mongoDB.svg",
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ export const experiences = [
     ],
     color: "from-pink-100 to-pink-20",
     icon: "🚀",
-    logoPath: "/images/logo3.png",
+      logoPath: "/images/svg/skills/css.svg",
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ export const experiences = [
     ],
     color: "from-purple-100 to-blue-100",
     icon: "🎓",
-   logoPath: "/images/logo3.png",
+     logoPath: "/images/svg/skills/figma.svg",
   },
   
 ];

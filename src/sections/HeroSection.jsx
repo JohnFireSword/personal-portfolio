@@ -18,6 +18,8 @@ const Hero = () => {
   },{
     y:0 , opacity:1,stagger:0.2, duration:1,ease:'power2.inOut' 
   })})
+
+
   return (
     <section id="hero" className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10 flex">
@@ -64,11 +66,11 @@ const Hero = () => {
           </div>
         </header>
 
-        <figure>
+        {/* <figure>
           <div className="hero-3d-layout ">
             <HeroExperience />
           </div>
-        </figure>
+        </figure> */}
       </div>
      
     </section>

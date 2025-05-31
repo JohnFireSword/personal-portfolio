@@ -6,35 +6,29 @@ import { useState } from "react";
 import TitleHeader from "../components/TitleHeader";
 import ExperienceCard from "../components/ExperienceCard";
 import experiences from "../constants/experiences";
-import { expCards } from "../constants";
-
-import GlowEffect from "../components/HeroModels/GlowEffect";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
-const [activeId, setActiveId] = useState(null);
+  const [scrollActiveId, setScrollActiveId] = useState(null);
+  const [clickActiveId, setClickActiveId] = useState(null);
 
-useGSAP(() => {
-  gsap.utils.toArray(".timeline-card").forEach((card, index) => {
-    const cardId = card.getAttribute("data-id");
+  useGSAP(() => {
+    gsap.utils.toArray(".timeline-card").forEach((card, index) => {
+      const cardId = card.getAttribute("data-id");
 
-    ScrollTrigger.create({
-      trigger: card,
-      start: "top 80%",
-      end: "bottom 30%",
-      onEnter: () => setActiveId(cardId),
-      onLeaveBack: () => setActiveId(null),
+      ScrollTrigger.create({
+        trigger: card,
+        start: "top 80%",
+        end: "bottom 30%",
+        onEnter: () => setScrollActiveId(cardId),
+        onLeaveBack: () => setScrollActiveId(null),
+      });
     });
-  });
-}, []);
+  }, []);
 
   useGSAP(() => {
     gsap.utils.toArray(".timeline-card").forEach((card) => {
-
-      
-
-
       gsap.from(card, {
         xPercent: -100,
         opacity: 0,
@@ -44,7 +38,7 @@ useGSAP(() => {
         scrollTrigger: {
           trigger: card,
           start: "top 80%",
-          className: "active"
+          className: "active",
         },
       });
     });
@@ -68,8 +62,7 @@ useGSAP(() => {
   return (
     <section
       id="experience"
-      className="relative  w-full md:mt-30 mt-20 section-padding xl:px-0"
-    >
+      className="relative  w-full md:mt-30 mt-20 section-padding xl:px-0">
       <div className="absolute top-0 left-0 z-10 flex">
         <img src="/section.svg" alt="background" />
       </div>
@@ -89,8 +82,7 @@ useGSAP(() => {
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animation: `pulse ${2 + Math.random() * 2}s infinite`,
-              }}
-            ></div>
+              }}></div>
           ))}
         </div>
 
@@ -98,19 +90,22 @@ useGSAP(() => {
           {/* Experience Cards Container */}
           <div className=" z-50 xl:space-y-32 space-y-10 ">
             {experiences.map((card) => {
-              const isActive = activeId === card.id;
-
               return (
-               <div key={card.id} className="exp-card-wrapper">
-  <div className="xl:w-3/6 timeline-card" data-id={card.id}>
-    <ExperienceCard
-      experience={card}
-      isActive={activeId === String(card.id)}
-      onClick={() =>
-        setActiveId((prev) => (prev === card.id ? null : card.id))
-      }
-    />
-  </div>
+                <div key={card.id} className="exp-card-wrapper">
+                  <div className="xl:w-3/6 timeline-card" data-id={card.id}>
+                    <ExperienceCard
+                      experience={card}
+                      isActive={
+                        clickActiveId === card.id ||
+                        scrollActiveId === String(card.id)
+                      }
+                      onClick={() =>
+                        setClickActiveId((prev) =>
+                          prev === card.id ? null : card.id
+                        )
+                      }
+                    />
+                  </div>
 
                   <div className="xl:w-2/6 ">
                     <div className="flex item-start ">
