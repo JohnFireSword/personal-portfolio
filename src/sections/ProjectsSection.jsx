@@ -328,7 +328,7 @@ function ProjectsSection() {
   return (
     <div
       id="projects"
-      className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
+      className="relative z-50 border-t mt-12 my-12 lg:my-24 border-[#25213b]">
       <img
         src="/section.svg"
         alt="Hero"

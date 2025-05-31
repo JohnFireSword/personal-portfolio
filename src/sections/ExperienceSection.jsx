@@ -13,8 +13,28 @@ import GlowEffect from "../components/HeroModels/GlowEffect";
 gsap.registerPlugin(ScrollTrigger);
 
 const Experience = () => {
+const [activeId, setActiveId] = useState(null);
+
+useGSAP(() => {
+  gsap.utils.toArray(".timeline-card").forEach((card, index) => {
+    const cardId = card.getAttribute("data-id");
+
+    ScrollTrigger.create({
+      trigger: card,
+      start: "top 80%",
+      end: "bottom 30%",
+      onEnter: () => setActiveId(cardId),
+      onLeaveBack: () => setActiveId(null),
+    });
+  });
+}, []);
+
   useGSAP(() => {
     gsap.utils.toArray(".timeline-card").forEach((card) => {
+
+      
+
+
       gsap.from(card, {
         xPercent: -100,
         opacity: 0,
@@ -24,6 +44,7 @@ const Experience = () => {
         scrollTrigger: {
           trigger: card,
           start: "top 80%",
+          className: "active"
         },
       });
     });
@@ -47,7 +68,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="relative overflow-hidden w-full md-mt-40 mt-20 section-padding xl:px-0"
+      className="relative  w-full md:mt-30 mt-20 section-padding xl:px-0"
     >
       <div className="absolute top-0 left-0 z-10 flex">
         <img src="/section.svg" alt="background" />
@@ -77,11 +98,20 @@ const Experience = () => {
           {/* Experience Cards Container */}
           <div className=" z-50 xl:space-y-32 space-y-10 ">
             {experiences.map((card) => {
+              const isActive = activeId === card.id;
+
               return (
-                <div key={card.title} className="exp-card-wrapper">
-                  <div className="xl:w-3/6">
-                    <ExperienceCard experience={card}></ExperienceCard>
-                  </div>
+               <div key={card.id} className="exp-card-wrapper">
+  <div className="xl:w-3/6 timeline-card" data-id={card.id}>
+    <ExperienceCard
+      experience={card}
+      isActive={activeId === String(card.id)}
+      onClick={() =>
+        setActiveId((prev) => (prev === card.id ? null : card.id))
+      }
+    />
+  </div>
+
                   <div className="xl:w-2/6 ">
                     <div className="flex item-start ">
                       <div className=" hidden bottom-15 top-0 2xl:left-[38vw] xl:left-[39.5vw] h-full md:flex justify-center absolute md:right-15 right-15">

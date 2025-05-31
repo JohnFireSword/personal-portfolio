@@ -68,7 +68,8 @@ export const experiences = [
     color: "from-purple-100 to-blue-100",
     icon: "🎓",
    logoPath: "/images/logo3.png",
-  }
+  },
+  
 ];
 
 export default experiences;
