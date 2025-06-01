@@ -4,6 +4,8 @@ import ExperienceSection from "./sections/ExperienceSection";
 import Hero from "./sections/HeroSection";
 import ProjectsSection from "./sections/ProjectsSection";
 import FeaturedTraitsCards from "./sections/FeaturesSection";
+import ContactSection from "./sections/ContactSection";
+import PortfolioFooter from "./sections/FooterSection";
 
 const App = () => {
   return (
@@ -14,6 +16,8 @@ const App = () => {
       <ProjectsSection/>
       <LogoSection/>
       <FeaturedTraitsCards/>
+      <ContactSection/>
+      <PortfolioFooter/>
     </>
     
   );

@@ -84,7 +84,7 @@ function FeaturedTraitsCards() {
 
   return (
     <section
-      ref={containerRef}
+      ref={containerRef} id="featured"
       className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Simplified background with reduced blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-black-100 via-black-200 to-black-100 opacity-50" />
