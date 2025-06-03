@@ -302,25 +302,6 @@ const ContactPage = () => {
               />
             </div>
 
-            {/* <button
-              type="submit"
-              disabled={isSubmitting}
-              className="submit-btn w-full py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{
-                boxShadow: "0 10px 30px rgba(246, 38, 175, 0.3)",
-              }}>
-              {isSubmitting ? (
-                <div className="flex items-center justify-center space-x-2">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  <span>Sending...</span>
-                </div>
-              ) : submitted ? (
-                "Message Sent! ✅"
-              ) : (
-                "Send Message 🚀"
-              )}
-            </button> */}
-
             <button
               disabled={isSubmitting}
               className="bg-gradient-to-r from-pink-500 to-purple-600 w-full cursor-pointer px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group transition-all duration-300">

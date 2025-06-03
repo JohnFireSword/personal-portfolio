@@ -36,7 +36,7 @@ const BackToTop = () => {
     }
   }, [isVisible]);
 
-  const circumference = 2 * Math.PI * 20; // radius = 20
+  const circumference = 2 * Math.PI * 20;
   const strokeDashoffset = circumference - (scrollProgress / 100) * circumference;
 
   if (!isVisible) return null;
@@ -44,7 +44,7 @@ const BackToTop = () => {
   return (
     <button
       onClick={scrollToTop}
-      className="back-to-top-btn fixed bottom-8 right-8 z-50 w-14 h-14 bg-pink-500 hover:bg-pink-600 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
+      className="back-to-top-btn fixed bottom-8 right-8 z-50 w-14 h-14  rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
       aria-label="Back to top"
     >
       {/* Progress Circle */}

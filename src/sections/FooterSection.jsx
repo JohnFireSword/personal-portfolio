@@ -127,20 +127,7 @@ const PortfolioFooter = () => {
         className="absolute top-0 left-0 w-full h-20 opacity-20"
       />
 
-      {/* Floating Particles */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(15)].map((_, i) => (
-          <div
-            key={i}
-            ref={(el) => addParticleRef(el, i)}
-            className="absolute w-1 h-1 bg-pink-500 rounded-full opacity-40"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${20 + Math.random() * 60}%`,
-            }}
-          />
-        ))}
-      </div>
+      
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-16">
         {/* Divider */}
