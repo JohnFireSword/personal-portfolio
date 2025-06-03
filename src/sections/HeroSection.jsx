@@ -1,24 +1,28 @@
-
 import Button from "../components/button";
+import AnimationLottie from "../components/helpers/animation-lottie";
 import HeroExperience from "../components/HeroModels/HeroExperience";
 import { words } from "../constants";
 import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
-
-
-
+import gsap from "gsap";
+import Lottie from "lottie-react";
 
 const Hero = () => {
-
-
-  useGSAP(()=>{
-
-  gsap.fromTo('.hero-text h1',{
-    y: 60, opacity:0,
-  },{
-    y:0 , opacity:1,stagger:0.2, duration:1,ease:'power2.inOut' 
-  })})
-
+  useGSAP(() => {
+    gsap.fromTo(
+      ".hero-text h1",
+      {
+        y: 60,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.inOut",
+      }
+    );
+  });
 
   return (
     <section id="hero" className="relative overflow-hidden">
@@ -26,7 +30,7 @@ const Hero = () => {
         <img src="/section.svg" alt="background" />
       </div>
 
-      <div className="hero-layout">
+      <div className="hero-layout justify-between">
         <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
             <div className="hero-text">
@@ -37,8 +41,7 @@ const Hero = () => {
                     {words.map((word) => (
                       <span
                         key={words.text}
-                        className="flex items-center md:gap-3 gap-1 pb-2"
-                      >
+                        className="flex items-center md:gap-3 gap-1 pb-2">
                         <img
                           src={word.imgPath}
                           alt={word.text}
@@ -61,10 +64,13 @@ const Hero = () => {
             <Button
               id="button"
               className="md:w-80 md:h-16 w-60 h-12"
-              text="See my work"
-            ></Button>
+              text="See my work"></Button>
           </div>
+          
         </header>
+        <div className="xl:w-[50%]  min-h-[50vh] absolute top-24 xl:-right-20 right-0 ">
+          <AnimationLottie animationPath="/images/lotties/programming-lottie.json" />
+        </div>
 
         {/* <figure>
           <div className="hero-3d-layout ">
@@ -72,7 +78,6 @@ const Hero = () => {
           </div>
         </figure> */}
       </div>
-     
     </section>
   );
 };
