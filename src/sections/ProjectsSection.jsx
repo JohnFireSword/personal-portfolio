@@ -111,15 +111,34 @@ function ProjectsSection() {
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {projectCategories.map((category) => (
+            // <button
+            //   key={category}
+            //   onClick={() => setActiveCategory(category)}
+            //   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+            //     activeCategory === category
+            //       ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
+            //       : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+            //   }`}>
+            //   {category}
+            // </button>
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-              }`}>
-              {category}
+              className={`cursor-pointer  px-6 py-3 rounded-xl border border-slate-500 text-white font-medium group transition-all duration-300
+    ${
+      activeCategory === category
+        ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
+        : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+    }
+  `}>
+              <div className="relative overflow-hidden h-6">
+                <span className="block group-hover:-translate-y-6 transition-transform duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                  {category}
+                </span>
+                <span className="absolute top-6 left-0 right-0 text-center group-hover:top-0 transition-all duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                  {category}
+                </span>
+              </div>
             </button>
           ))}
         </div>
