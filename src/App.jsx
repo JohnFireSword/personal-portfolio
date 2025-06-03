@@ -6,20 +6,21 @@ import ProjectsSection from "./sections/ProjectsSection";
 import FeaturedTraitsCards from "./sections/FeaturesSection";
 import ContactSection from "./sections/ContactSection";
 import PortfolioFooter from "./sections/FooterSection";
+import BackToTop from "./components/BackToTopButton";
 
 const App = () => {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <Hero />
-      <ExperienceSection/>
-      <ProjectsSection/>
-      <LogoSection/>
-      <FeaturedTraitsCards/>
-      <ContactSection/>
-      <PortfolioFooter/>
+      <ExperienceSection />
+      <ProjectsSection />
+      <LogoSection />
+      <FeaturedTraitsCards />
+      <ContactSection />
+      <PortfolioFooter />
+      <BackToTop />
     </>
-    
   );
 };
 

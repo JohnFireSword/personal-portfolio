@@ -2,7 +2,7 @@ import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
 import { useMediaQuery } from "react-responsive";
-import { Dog } from "./Little-dog";
+
 import HeroLights from "./HeroLights";
 import { GamingRoom } from "./Gaming_desktop_pc";
 

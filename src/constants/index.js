@@ -12,7 +12,7 @@ const navLinks = [
     link: "#skills",
   },
   {
-    name: "Featured",
+    name: "Traits",
     link: "#featured",
   },
 ];

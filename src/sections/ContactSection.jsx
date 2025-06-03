@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import TitleHeader from "../components/TitleHeader";
+
+import emailjs from "@emailjs/browser";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,11 +15,13 @@ const ContactPage = () => {
   const particlesRef = useRef([]);
   const socialRef = useRef();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -29,16 +34,16 @@ const ContactPage = () => {
             ease: "power2.inOut",
             yoyo: true,
             repeat: -1,
-            delay: index * 0.5
+            delay: index * 0.5,
           });
-          
+
           gsap.to(orb, {
             x: 20,
             duration: 4 + index,
             ease: "power1.inOut",
             yoyo: true,
             repeat: -1,
-            delay: index * 0.3
+            delay: index * 0.3,
           });
         }
       });
@@ -51,14 +56,10 @@ const ContactPage = () => {
             duration: 3 + (index % 3),
             ease: "none",
             repeat: -1,
-            delay: index * 0.2
+            delay: index * 0.2,
           });
         }
       });
-
-     
-
-
     }, containerRef);
 
     return () => ctx.revert();
@@ -67,27 +68,60 @@ const ContactPage = () => {
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Success animation
-    gsap.to(".submit-btn", {
-      scale: 1.1,
-      duration: 0.2,
-      yoyo: true,
-      repeat: 1,
-      ease: "power2.inOut"
-    });
-    
-    setIsSubmitting(false);
-    setFormData({ name: '', email: '', message: '' });
+    setSubmitMessage("");
+
+    try {
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      // Success animation for button
+      gsap.fromTo(
+        ".submit-btn",
+        { scale: 1 },
+        {
+          scale: 1.1,
+          duration: 0.2,
+          yoyo: true,
+          repeat: 1,
+          ease: "power2.inOut",
+          onComplete: () => {
+            gsap.set(".submit-btn", { scale: 1 });
+          },
+        }
+      );
+
+      // Success state
+      setSubmitted(true);
+      setSubmitMessage("Message sent successfully! 🎉");
+      setFormData({ name: "", email: "", message: "" });
+
+      // Reset success state after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setSubmitMessage("");
+      }, 5000);
+    } catch (error) {
+      console.log("EmailJS error", error);
+      setSubmitMessage("Failed to send message. Please try again. ❌");
+
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitMessage("");
+      }, 5000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const addOrbRef = (el, index) => {
@@ -99,31 +133,33 @@ const ContactPage = () => {
   };
 
   return (
-    <section 
-      ref={containerRef} id='contact'
-      className="min-h-screen bg-[#0d1224] relative overflow-hidden flex items-center justify-center py-20 px-4"
-    >
+    <section
+      ref={containerRef}
+      id="contact"
+      className="min-h-screen bg-[#0d1224] relative overflow-hidden flex items-center px-4 flex-col">
+      <TitleHeader title="Get In Touch With Me " sub="Contact Info ✉️" />
+
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none">
-        <div 
+        <div
           ref={(el) => addOrbRef(el, 0)}
           className="absolute top-20 left-20 w-64 h-64 rounded-full opacity-10"
           style={{
-            background: 'radial-gradient(circle, #f626af 0%, transparent 70%)'
+            background: "radial-gradient(circle, #f626af 0%, transparent 70%)",
           }}
         />
-        <div 
+        <div
           ref={(el) => addOrbRef(el, 1)}
           className="absolute top-1/2 right-20 w-80 h-80 rounded-full opacity-10"
           style={{
-            background: 'radial-gradient(circle, #8228ec 0%, transparent 70%)'
+            background: "radial-gradient(circle, #8228ec 0%, transparent 70%)",
           }}
         />
-        <div 
+        <div
           ref={(el) => addOrbRef(el, 2)}
           className="absolute bottom-20 left-1/3 w-48 h-48 rounded-full opacity-10"
           style={{
-            background: 'radial-gradient(circle, #0025ba 0%, transparent 70%)'
+            background: "radial-gradient(circle, #0025ba 0%, transparent 70%)",
           }}
         />
       </div>
@@ -143,48 +179,48 @@ const ContactPage = () => {
         ))}
       </div>
 
-      <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-6xl py-20 mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
         {/* Left Side - Title and Info */}
         <div className="text-white space-y-8">
           <div ref={titleRef} className="space-y-6">
             <h1 className="text-5xl lg:text-7xl font-bold">
               <span className="block text-white">Let's</span>
-              <span 
+              <span
                 className="block bg-gradient-to-r from-pink-500 via-purple-500 to-blue-600 bg-clip-text text-transparent"
                 style={{
-                  backgroundSize: '200% 200%',
-                  animation: 'gradientShift 3s ease-in-out infinite'
-                }}
-              >
+                  backgroundSize: "200% 200%",
+                  animation: "gradientShift 3s ease-in-out infinite",
+                }}>
                 Connect
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-md leading-relaxed">
-              Ready to bring your ideas to life? Let's create something amazing together.
+              Ready to bring your ideas to life? Let's create something amazing
+              together.
             </p>
           </div>
 
           {/* Social Links */}
           <div ref={socialRef} className="flex space-x-6">
             {[
-              { name: 'Email', icon: '✉️', href: 'mailto:hello@example.com' },
-              { name: 'LinkedIn', icon: '💼', href: '#' },
-              { name: 'GitHub', icon: '🚀', href: '#' },
-              { name: 'Twitter', icon: '🐦', href: '#' }
+              { name: "Email", icon: "✉️", href: "mailto:hello@example.com" },
+              { name: "LinkedIn", icon: "💼", href: "#" },
+              { name: "GitHub", icon: "🚀", href: "#" },
+              { name: "Twitter", icon: "🐦", href: "#" },
             ].map((social, index) => (
               <a
                 key={index}
                 href={social.href}
                 className="w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300 glow-effect"
                 style={{
-                  boxShadow: '0 0 20px rgba(246, 38, 175, 0.3)'
+                  boxShadow: "0 0 20px rgba(246, 38, 175, 0.3)",
                 }}
                 onMouseEnter={(e) => {
                   gsap.to(e.target, {
                     scale: 1.2,
                     rotation: 360,
                     duration: 0.3,
-                    ease: "power2.out"
+                    ease: "power2.out",
                   });
                 }}
                 onMouseLeave={(e) => {
@@ -192,10 +228,9 @@ const ContactPage = () => {
                     scale: 1,
                     rotation: 0,
                     duration: 0.3,
-                    ease: "power2.out"
+                    ease: "power2.out",
                   });
-                }}
-              >
+                }}>
                 {social.icon}
               </a>
             ))}
@@ -205,14 +240,26 @@ const ContactPage = () => {
         {/* Right Side - Contact Form */}
         <div className="relative">
           <div className="contact-glow absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-600/10 rounded-3xl blur-xl opacity-0" />
-          
-          <div 
+
+          <form
             ref={formRef}
+            onSubmit={handleSubmit}
             className="relative bg-[#1c1c21] backdrop-blur-sm rounded-3xl p-8 border border-gray-800 space-y-6"
             style={{
-              boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)'
-            }}
-          >
+              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.3)",
+            }}>
+            {/* Success/Error Message */}
+            {submitMessage && (
+              <div
+                className={`p-4 rounded-xl text-center font-medium ${
+                  submitted
+                    ? "bg-green-500/10 border border-green-500/30 text-green-400"
+                    : "bg-red-500/10 border border-red-500/30 text-red-400"
+                }`}>
+                {submitMessage}
+              </div>
+            )}
+
             <div className="space-y-2">
               <label className="text-white font-medium">Your Name</label>
               <input
@@ -221,22 +268,9 @@ const ContactPage = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 bg-[#0e0e10] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-colors duration-300"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-[#0e0e10] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-colors duration-300 disabled:opacity-50"
                 placeholder="Enter your name"
-                onFocus={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1.02,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }}
-                onBlur={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }}
               />
             </div>
 
@@ -248,22 +282,9 @@ const ContactPage = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 bg-[#0e0e10] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-colors duration-300"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-[#0e0e10] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-colors duration-300 disabled:opacity-50"
                 placeholder="your.email@example.com"
-                onFocus={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1.02,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }}
-                onBlur={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }}
               />
             </div>
 
@@ -275,67 +296,67 @@ const ContactPage = () => {
                 onChange={handleInputChange}
                 required
                 rows={5}
-                className="w-full px-4 py-3 bg-[#0e0e10] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-colors duration-300 resize-none"
+                disabled={isSubmitting}
+                className="w-full px-4 py-3 bg-[#0e0e10] border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-pink-500 focus:outline-none transition-colors duration-300 resize-none disabled:opacity-50"
                 placeholder="Tell me about your project..."
-                onFocus={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1.02,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }}
-                onBlur={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }}
               />
             </div>
 
-            <button
-              type="button"
+            {/* <button
+              type="submit"
               disabled={isSubmitting}
-              onClick={handleSubmit}
-              className="submit-btn w-full py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50"
+              className="submit-btn w-full py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                boxShadow: '0 10px 30px rgba(246, 38, 175, 0.3)'
-              }}
-              onMouseEnter={(e) => {
-                if (!isSubmitting) {
-                  gsap.to(e.target, {
-                    y: -2,
-                    duration: 0.2,
-                    ease: "power2.out"
-                  });
-                }
-              }}
-              onMouseLeave={(e) => {
-                gsap.to(e.target, {
-                  y: 0,
-                  duration: 0.2,
-                  ease: "power2.out"
-                });
-              }}
-            >
+                boxShadow: "0 10px 30px rgba(246, 38, 175, 0.3)",
+              }}>
               {isSubmitting ? (
                 <div className="flex items-center justify-center space-x-2">
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Sending...</span>
                 </div>
+              ) : submitted ? (
+                "Message Sent! ✅"
               ) : (
-                'Send Message 🚀'
+                "Send Message 🚀"
               )}
+            </button> */}
+
+            <button
+              disabled={isSubmitting}
+              className="bg-gradient-to-r from-pink-500 to-purple-600 w-full cursor-pointer px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group transition-all duration-300">
+              <div className="relative overflow-hidden h-6">
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    <span>Sending...</span>
+                  </div>
+                ) : submitted ? (
+                  <span className="block text-center">Message sent! ✅</span>
+                ) : (
+                  <>
+                    <span className="block group-hover:-translate-y-6 transition-transform duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
+                      Send message
+                    </span>
+                    <span className="absolute top-6 left-0 right-0 group-hover:top-0 transition-all duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] text-center">
+                      Send message
+                    </span>
+                  </>
+                )}
+              </div>
             </button>
-          </div>
+          </form>
         </div>
       </div>
 
       <style jsx>{`
         @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
       `}</style>
     </section>
