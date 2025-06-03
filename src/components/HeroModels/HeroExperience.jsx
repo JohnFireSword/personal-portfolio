@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import HeroLights from "./HeroLights";
 import { GamingRoom } from "./Gaming_desktop_pc";
 
-function HeroExperience() {
+function GamingRoom() {
   const isTablet = useMediaQuery({ query: "max-width: 1024px" });
   const isMobile = useMediaQuery({ query: "max-width: 768px" });
 
@@ -30,4 +30,4 @@ function HeroExperience() {
   );
 }
 
-export default HeroExperience;
+export default GamingRoom;
