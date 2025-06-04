@@ -73,7 +73,7 @@ const Experience = () => {
       </div>
       <div className="w-full h-full md:px-20 px-5">
         <TitleHeader
-          title="Professional Work Experience"
+          title="Past Experiences"
           sub="My Career Overview 💼"
         />
 
@@ -115,13 +115,13 @@ const Experience = () => {
 
                   <div className="xl:w-2/6 ">
                     <div className="flex item-start ">
-                      <div className=" hidden bottom-15 top-0 2xl:left-[38vw] xl:left-[39.5vw] h-full md:flex justify-center absolute md:right-15 right-15">
+                      <div className=" hidden bottom-15 top-0 2xl:left-[39vw] xl:left-[40.5vw] h-full md:flex justify-center absolute md:right-15">
                         <div className="timeline2 h-[110%] absolute z-30  -top-7 w-14 md:w-28 bg-[#0d1224]" />
                         <div className="gradient-line w-1 h-full" />
                       </div>
                       <div className=" flex xl:gap-20 md:gap-10 gap-5 relative z-20">
-                        <div className="timeline-logo">
-                          <img src={card.logoPath} alt="logo" />
+                        <div className="timeline-logo bg-[#0d1224]  w-26">
+                          <img className="w-20" src={card.logoPath} alt="logo" />
                         </div>
                       </div>
                     </div>

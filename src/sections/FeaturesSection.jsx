@@ -49,12 +49,12 @@ function FeaturedTraitsCards() {
         scrollTrigger: {
           trigger: titleRef.current,
           start: "top bottom-=100",
-          once: true, // Only animate once for better performance
+          once: true, 
         },
       }
     );
 
-    // Simplified cards animation with better performance
+ 
     cardsRef.current.forEach((card, i) => {
       if (card) {
         gsap.fromTo(
@@ -69,12 +69,12 @@ function FeaturedTraitsCards() {
             y: 0,
             scale: 1,
             duration: 0.6,
-            delay: i * 0.08, // Reduced delay for faster overall animation
+            delay: i * 0.08, 
             ease: "power2.out",
             scrollTrigger: {
               trigger: card,
               start: "top bottom-=50",
-              once: true, // Only animate once
+              once: true, 
             },
           }
         );

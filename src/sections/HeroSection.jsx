@@ -47,22 +47,7 @@ const Hero = () => {
       }
     );
 
-    // Button animation
-    gsap.fromTo(
-      "#button",
-      {
-        y: 30,
-        opacity: 0,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: 1,
-      }
-    );
-
+   
     // Floating animation for lottie
     gsap.to(".lottie", {
       y: -10,
@@ -85,7 +70,7 @@ const Hero = () => {
       <div className="hero-layout">
         {/* Header */}
         <header className="flex flex-col justify-center w-full md:px-20 px-5 z-20">
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-8 ml-10">
             <div className="hero-text ">
               <h1>
                 From
