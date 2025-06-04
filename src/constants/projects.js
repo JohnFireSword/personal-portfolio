@@ -15,10 +15,12 @@ export const projects = [
 
   ],
   displayType: "mobile",
-  mockupImage: "images/mockups/services-hub-clean.png",
+  mockupImage: "images/mockups/ihub2-shot.png",
   demoUrl: "https://iservices.gr/iservices-hub-application/", 
   color: "from-blue-400 to-blue-600",
-  accent: "#"
+  status: "Live",
+  color: "from-indigo-400 to-blue-600",
+   accent: "#3b82f6"
 }
 ,
   {
@@ -57,13 +59,13 @@ export const projects = [
     "Offline support with local database syncing",
     "Secure user authentication and cloud backup"
   ],
-  mockupImage: "/images/mockups/timetamer-app.png",
+  mockupImage: "/images/mockups/timetamer.png",
   displayType: "mobile",
   images: {
-    mobile: "/project-mobile-timetamer.jpg"
+    mobile: ""
   },
-  demoUrl: "",  // add if available
-  githubUrl: "",  // add if available
+  demoUrl: "",  
+  githubUrl: "https://github.com/JohnFireSword/notes", 
   status: "Thesis project",
   color: "from-indigo-400 to-blue-600",
   accent: "#3b82f6"
@@ -153,7 +155,7 @@ export const projects = [
     "Booking history and status tracking"
   ],
   displayType: "mobile",
-  mockupImage: "images/mockups/corfu-bee-new.png",
+  mockupImage: "images/mockups/corfu-bee-shot.png",
   demoUrl: "",  // add real demo URL if available
   githubUrl: "",  // add GitHub link if available
   color: "from-blue-400 to-blue-600",
