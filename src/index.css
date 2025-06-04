@@ -258,7 +258,7 @@ section {
   }
 
   .timeline-logo {
-    @apply md:size-20 flex-none rounded-full flex justify-center items-center md:-translate-y-7 ;
+    @apply md:size-20 flex-none rounded-full flex justify-center items-center md:-translate-y-7 bg-[#0d1224] ;
   }
 
   .exp-card-wrapper {
