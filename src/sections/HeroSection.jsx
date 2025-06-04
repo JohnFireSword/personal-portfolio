@@ -6,29 +6,72 @@ import gsap from "gsap";
 
 const Hero = () => {
   useGSAP(() => {
-
-        gsap.from(".lottie", {
-     scale: 0.1,
+    // Enhanced lottie animation with bounce effect
+    gsap.from(".lottie", {
+      scale: 0.1,
       opacity: 0,
-      duration: 1,
-      ease: "power2.out",
+      duration: 1.2,
+      ease: "back.out(1.7)",
       delay: 0.3,
     });
 
+    // Staggered text animation
     gsap.fromTo(
       ".hero-text h1",
       {
-        y: 60,
+        y: 80,
         opacity: 0,
       },
       {
         y: 0,
         opacity: 1,
-        stagger: 0.2,
+        stagger: 0.15,
         duration: 1,
-        ease: "power2.inOut",
+        ease: "power2.out",
       }
     );
+
+    // Subtitle animation
+    gsap.fromTo(
+      ".subtitle",
+      {
+        y: 40,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power2.out",
+        delay: 0.8,
+      }
+    );
+
+    // Button animation
+    gsap.fromTo(
+      "#button",
+      {
+        y: 30,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out",
+        delay: 1,
+      }
+    );
+
+    // Floating animation for lottie
+    gsap.to(".lottie", {
+      y: -10,
+      duration: 2,
+      ease: "power2.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: 1.5,
+    });
   });
 
   return (
@@ -39,13 +82,13 @@ const Hero = () => {
       </div>
 
       {/* Content layout */}
-      <div className="hero-layout flex flex-col xl:flex-row justify-between items-center ">
+      <div className="hero-layout">
         {/* Header */}
         <header className="flex flex-col justify-center w-full md:px-20 px-5 z-20">
           <div className="flex flex-col gap-7">
-            <div className="hero-text">
+            <div className="hero-text ">
               <h1>
-                Shaping
+                From
                 <span className="slide">
                   <span className="wrapper">
                     {words.map((word) => (
@@ -64,13 +107,16 @@ const Hero = () => {
                   </span>
                 </span>
               </h1>
-              <h1>into real projects</h1>
-              <h1>that deliver results</h1>
+              <h1>into interactive</h1>
+              <h1>experiences</h1>
             </div>
 
-            <h1 className="text-pink-500 md:text-xl pointer-events-none ">
-              Hi, I'm John, a Full Stack Developer from Greece
-            </h1>
+            <div className="subtitle">
+              <h2 className="text-md sm:text-lg md:text-xl text-pink-500 font-medium">
+                Hi, I'm John and I deliver results that matter
+               
+              </h2>
+            </div>
 
             <Button
               id="button"
@@ -81,9 +127,22 @@ const Hero = () => {
         </header>
 
         {/* Lottie Animation */}
-        <div className=" lottie w-full xl:w-[50%] mt-10 xl:mt-0 xl:absolute xl:top-24 xl:-right-20 flex justify-center xl:block">
-          <AnimationLottie animationPath="/images/lotties/programming-lottie.json" />
-        </div>
+            <div className="lottie xl:w-4/5 w-full max-w-lg xl:max-w-none mt-12 xl:mt-0">
+            <div className="relative">
+              {/* Glow effect behind animation */}
+              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-3xl opacity-50"></div>
+              <AnimationLottie animationPath="/images/lotties/programming-lottie.json" />
+            </div>
+          </div>
+       <div className="absolute hidden md:flex bottom-6 left-1/2 -translate-x-1/2 z-20">
+  <div className="flex flex-col items-center space-y-2">
+    <span className="text-sm text-gray-400 animate-pulse">Scroll down</span>
+    <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+      <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
+    </div>
+  </div>
+</div>
+    
       </div>
     </section>
   );
