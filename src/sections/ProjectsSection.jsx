@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import { useState, useEffect, useRef } from "react";
+import NavigationArrow from "../components/NavArrow";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -15,9 +16,11 @@ function ProjectsSection() {
   const [activeProject, setActiveProject] = useState(0);
   const [activeCategory, setActiveCategory] = useState("All Projects");
   const [isVisible, setIsVisible] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const titleRef = useRef(null);
   const splitTextInstance = useRef(null);
+  const projectContentRef = useRef(null);
 
   useEffect(() => {
     if (!titleRef.current) return;
@@ -57,7 +60,7 @@ function ProjectsSection() {
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById("projects");
+    const element = document.getElementById("work");
     if (element) observer.observe(element);
 
     return () => observer.disconnect();
@@ -75,9 +78,72 @@ function ProjectsSection() {
 
   const currentProject = filteredProjects[activeProject];
 
+  // Navigation functions with smooth transitions
+  const navigateProject = (direction) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    // Animate out current content
+    gsap.to(projectContentRef.current, {
+      opacity: 0,
+      x: direction === 'next' ? -50 : 50,
+      duration: 0.3,
+      ease: "power2.out",
+      onComplete: () => {
+        // Update project index
+        if (direction === 'next') {
+          setActiveProject((prev) => 
+            prev < filteredProjects.length - 1 ? prev + 1 : 0
+          );
+        } else {
+          setActiveProject((prev) => 
+            prev > 0 ? prev - 1 : filteredProjects.length - 1
+          );
+        }
+        
+        // Animate in new content
+        gsap.fromTo(projectContentRef.current, 
+          { 
+            opacity: 0, 
+            x: direction === 'next' ? 50 : -50 
+          },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.4,
+            ease: "power2.out",
+            onComplete: () => setIsTransitioning(false)
+          }
+        );
+
+       
+      }
+    });
+  };
+
+  const handlePrevious = () => navigateProject('prev');
+  const handleNext = () => navigateProject('next');
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handlePrevious();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [filteredProjects.length]);
+
   return (
     <div
-      id="projects"
+      id="work"
       className="relative z-50 border-t mt-12 my-12 lg:my-24 border-[#25213b]">
       <img
         src="/section.svg"
@@ -104,33 +170,23 @@ function ProjectsSection() {
       <TitleHeader
         ref={titleRef}
         className="title-header-title"
-        title="Project Showcase"
+        title="Recent Projects"
         sub="My Projects 📽️"
       />
+      
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {projectCategories.map((category) => (
-            // <button
-            //   key={category}
-            //   onClick={() => setActiveCategory(category)}
-            //   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-            //     activeCategory === category
-            //       ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
-            //       : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-            //   }`}>
-            //   {category}
-            // </button>
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`cursor-pointer  px-6 py-3 rounded-xl border border-slate-500 text-white font-medium group transition-all duration-300
-    ${
-      activeCategory === category
-        ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
-        : "bg-gray-800 text-gray-300 hover:bg-gray-700"
-    }
-  `}>
+              className={`cursor-pointer px-6 py-3 rounded-xl border border-slate-500 text-white font-medium group transition-all duration-300
+                ${activeCategory === category
+                  ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
+                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                }
+              `}>
               <div className="relative overflow-hidden h-6">
                 <span className="block group-hover:-translate-y-6 transition-transform duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
                   {category}
@@ -143,61 +199,102 @@ function ProjectsSection() {
           ))}
         </div>
 
+        {/* Main Project Display with Navigation */}
         {currentProject && (
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Device Mockups */}
-            <div
-              className={`transition-all duration-1000 ${
-                isVisible
-                  ? "translate-x-0 opacity-100"
-                  : "-translate-x-10 opacity-0"
-              }`}>
-              {currentProject.displayType === "mobile" && (
-                <div className="flex justify-center">
-                  <PhoneMockup project={currentProject} isActive={true} />
-                </div>
-              )}
-
-              {currentProject.displayType === "desktop" && (
-                <div className="flex justify-center">
-                  <DesktopMockup project={currentProject} isActive={true} />
-                </div>
-              )}
-
-              {currentProject.displayType === "both" && (
-                <div className="flex items-center justify-center gap-8">
-                  <PhoneMockup project={currentProject} isActive={true} />
-                  <DesktopMockup project={currentProject} isActive={true} />
-                </div>
-              )}
+          <div className="relative">
+            {/* Navigation Arrows */}
+            <div className="absolute nav-arrow left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10">
+              <NavigationArrow
+                direction="left" 
+                onClick={handlePrevious}
+                disabled={filteredProjects.length <= 1}
+              />
+            </div>
+            
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10">
+              <NavigationArrow
+                direction="right" 
+                onClick={handleNext}
+                disabled={filteredProjects.length <= 1}
+              />
             </div>
 
-            {/* Project Info */}
-            <div
-              className={`transition-all duration-1000 ${
-                isVisible
-                  ? "translate-x-0 opacity-100"
-                  : "translate-x-10 opacity-0"
-              }`}
-              style={{ transitionDelay: "200ms" }}>
-              <ProjectInfoPanel project={currentProject} />
+            {/* Project Content */}
+            <div 
+              ref={projectContentRef}
+              className="grid lg:grid-cols-2 gap-12 items-center px-8"
+            >
+              {/* Device Mockups */}
+              <div className={`transition-all duration-1000 ${
+                isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
+              }`}>
+                {currentProject.displayType === "mobile" && (
+                  <div className="flex justify-center">
+                    <PhoneMockup project={currentProject} isActive={true} />
+                  </div>
+                )}
+
+                {currentProject.displayType === "desktop" && (
+                  <div className="flex justify-center">
+                    <DesktopMockup project={currentProject} isActive={true} />
+                  </div>
+                )}
+
+                {currentProject.displayType === "both" && (
+                  <div className="flex items-center justify-center gap-8">
+                    <DesktopMockup project={currentProject} isActive={true} />
+                  </div>
+                )}
+              </div>
+
+              {/* Project Info */}
+              <div
+                className={`transition-all mr-10 duration-1000 ${
+                  isVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
+                }`}
+                style={{ transitionDelay: "200ms" }}>
+                <ProjectInfoPanel project={currentProject} />
+              </div>
             </div>
           </div>
         )}
 
-        {/* Project Navigation */}
-        <div className="flex justify-center mt-12 gap-3">
-          {filteredProjects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveProject(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                activeProject === index
-                  ? "bg-pink-500 scale-125 shadow-lg shadow-pink-500/50"
-                  : "bg-gray-600 hover:bg-gray-500"
-              }`}
-            />
-          ))}
+        {/* Enhanced Project Navigation Indicators */}
+        <div className="flex justify-center items-center mt-12 gap-6">
+          {/* Project Counter */}
+          <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <span>{activeProject + 1}</span>
+            <span>/</span>
+            <span>{filteredProjects.length}</span>
+          </div>
+          
+          {/* Dot Indicators */}
+          <div className="flex gap-3">
+            {filteredProjects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveProject(index)}
+                className={`relative w-3 h-3 rounded-full transition-all duration-300 ${
+                  activeProject === index
+                    ? "bg-pink-500 scale-125"
+                    : "bg-gray-600 hover:bg-gray-500"
+                }`}
+              >
+                {activeProject === index && (
+                  <div className="absolute inset-0 rounded-full bg-pink-500 animate-ping opacity-25"></div>
+                )}
+              </button>
+            ))}
+          </div>
+
+          {/* Keyboard Hint */}
+          <div className="hidden md:flex items-center gap-2 text-xs text-gray-500">
+            <span>Use</span>
+            <kbd className="px-2 py-1 bg-gray-800 rounded border border-gray-600">←</kbd>
+            <kbd className="px-2 py-1 bg-gray-800 rounded border border-gray-600">→</kbd>
+            <kbd></kbd>
+            <span>keys</span>
+          </div>
         </div>
 
         {/* Project Grid Preview */}
@@ -212,12 +309,15 @@ function ProjectsSection() {
                 onClick={() => setActiveProject(index)}
                 className={`cursor-pointer bg-black-100 border border-gray-700 rounded-xl p-4 transition-all duration-300 hover:border-pink-500/50 hover:scale-105 ${
                   activeProject === index
-                    ? "border-pink-500/50 shadow-lg shadow-pink-500/10"
+                    ? "border-pink-500/50 shadow-lg shadow-pink-500/10 ring-2 ring-pink-500/20"
                     : ""
                 }`}>
                 <div
-                  className={`w-full h-32 bg-gradient-to-r ${project.color} rounded-lg mb-4 flex items-center justify-center`}>
-                  <span className="text-white font-bold">{project.title}</span>
+                  className={`w-full h-32 bg-gradient-to-r ${project.color} rounded-lg mb-4 flex items-center justify-center relative overflow-hidden`}>
+                  <span className="text-white font-bold z-10">{project.title}</span>
+                  {activeProject === index && (
+                    <div className="absolute inset-0 bg-pink-500/20 animate-pulse"></div>
+                  )}
                 </div>
                 <h4 className="text-white font-semibold mb-2">
                   {project.title}
@@ -230,7 +330,7 @@ function ProjectsSection() {
                     {project.category}
                   </span>
                   <span
-                    className={`text-xs px-2 py-1 rounded text-white`}
+                    className="text-xs px-2 py-1 rounded text-white"
                     style={{ backgroundColor: project.accent }}>
                     {project.status}
                   </span>

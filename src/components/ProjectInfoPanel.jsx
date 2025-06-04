@@ -21,15 +21,17 @@ const ProjectInfoPanel = React.memo(({ project }) => {
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
-            <span className="text-blue-400">🔗</span>
+            className="p-1 bg-gray-400 hover:bg-gray-700 rounded-lg transition-colors"
+            >
+            <span className="text-blue-400"><img src="/images/svg/skills/link.svg" className='w-8 align-center' alt="" /></span>
           </a>
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors">
-            <span className="text-white">💻</span>
+            className="p-1 bg-gray-400 hover:bg-gray-700 rounded-lg transition-colors"
+            >
+            <span className="align-center items-center justify-center"><img className='w-8 align-center text-center bg-white rounded-full' src="/images/svg/skills/github.svg" alt="Github logo" /></span>
           </a>
         </div>
       </div>
