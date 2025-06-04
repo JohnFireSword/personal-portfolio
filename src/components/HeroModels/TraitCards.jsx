@@ -8,6 +8,7 @@ import {
   Lightbulb,
   Rocket,
   Heart,
+  LayoutDashboard,
 } from "lucide-react";
 
 const iconMap = {
@@ -17,6 +18,7 @@ const iconMap = {
   Zap: Zap,
   Users: Users,
   Target: Target,
+  LayoutDashboard: LayoutDashboard,
 };
 
 const IconRenderer = React.memo(({ iconName, className }) => {
@@ -26,18 +28,16 @@ const IconRenderer = React.memo(({ iconName, className }) => {
 });
 
 const TraitCard = React.memo(
-    
-  ({ trait, index, onMouseEnter, onMouseLeave, isHovered }) => (
+  ({ trait, onMouseEnter, onMouseLeave, isHovered }) => (
     <div
       className={`group relative ${
         trait.featured ? "lg:col-span-1 lg:row-span-1" : ""
       }`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}>
-      {/* Simplified card with reduced complexity */}
       <div
         className={`
-      relative h-full overflow-hidden rounded-3xl border transition-all duration-300 ease-out
+      relative  h-[350px] overflow-hidden rounded-3xl border transition-all duration-300 ease-out
       ${
         trait.featured
           ? "border-pink-100/20 bg-gradient-to-br from-black-100/90 to-black-200/90"
@@ -47,7 +47,6 @@ const TraitCard = React.memo(
       backdrop-blur-sm
       ${isHovered ? "transform scale-105 -translate-y-1" : ""}
     `}>
-        {/* Simplified background overlay - only shows on hover */}
         <div
           className={`
         absolute inset-0 bg-gradient-to-br ${trait.bgColor} opacity-0 
@@ -68,8 +67,7 @@ const TraitCard = React.memo(
         )}
 
         {/* Content */}
-        <div className="relative z-10 p-8 h-full flex flex-col">
-          {/* Icon with simplified hover effect */}
+        <div className="relative z-10 p-8  flex flex-col">
           <div
             className={`
           inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-6
@@ -100,7 +98,6 @@ const TraitCard = React.memo(
             {trait.description}
           </p>
 
-          {/* Simplified bottom accent */}
           <div className="mt-6 pt-4 border-t border-white-50/5">
             <div
               className={`
@@ -112,7 +109,6 @@ const TraitCard = React.memo(
           </div>
         </div>
 
-        {/* Simplified hover glow - reduced blur */}
         <div
           className={`
         absolute -inset-0.5 bg-gradient-to-r ${trait.color} rounded-3xl opacity-0 

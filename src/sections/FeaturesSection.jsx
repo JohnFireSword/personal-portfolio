@@ -2,12 +2,14 @@ import React, { useRef, useState, useCallback, useMemo } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
 import {
   Code,
   Palette,
   Zap,
   Users,
   Target,
+  LayoutDashboard,
   Lightbulb,
   Rocket,
   Heart,
@@ -15,6 +17,7 @@ import {
 import { traits } from "../constants/traits";
 import TraitCard from "../components/HeroModels/TraitCards";
 
+gsap.registerPlugin(SplitText);
 gsap.registerPlugin(ScrollTrigger);
 
 function FeaturedTraitsCards() {
@@ -35,56 +38,80 @@ function FeaturedTraitsCards() {
   // Memoize traits to prevent unnecessary re-renders
   const memoizedTraits = useMemo(() => traits, []);
 
-  // GSAP animations
-  useGSAP(() => {
-    // Simplified title animation
+useGSAP(() => {
+  // Title text animation using SplitText
+  SplitText.create(titleRef, {
+    type: "words,chars",
+    onSplit(self) {
+      gsap.from(self.chars, {
+        autoAlpha: 0,
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+        },
+      });
+    },
+  });
+
+  // Cards animation in sequence
+  cardsRef.current.forEach((card, i) => {
+    if (!card) return;
     gsap.fromTo(
-      titleRef.current,
-      { opacity: 0, y: 30 },
+      card,
+      {
+        opacity: 0,
+        y: 40,
+        scale: 0.95,
+      },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        scale: 1,
+        duration: 0.6,
+        delay: i * 0.08,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top bottom-=100",
-          once: true, 
+          trigger: card,
+          start: "top 85%",
+          once: true,
         },
       }
     );
+  });
 
- 
-    cardsRef.current.forEach((card, i) => {
-      if (card) {
-        gsap.fromTo(
-          card,
-          {
-            opacity: 0,
-            y: 40,
-            scale: 0.95,
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.6,
-            delay: i * 0.08, 
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom-=50",
-              once: true, 
-            },
-          }
-        );
+  // CTA animation
+  const cta = containerRef.current?.querySelector(".cta-button");
+  if (cta) {
+    gsap.fromTo(
+      cta,
+      { autoAlpha: 0, y: 30 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.4,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cta,
+          start: "top 90%",
+          once: true,
+        },
       }
-    });
-  }, []);
+    );
+  }
+}, []);
+
+
 
   return (
     <section
-      ref={containerRef} id="featured"
+      ref={containerRef}
+      id="featured"
       className="w-full py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Simplified background with reduced blur */}
       <div className="absolute inset-0 bg-gradient-to-br from-black-100 via-black-200 to-black-100 opacity-50" />
@@ -95,7 +122,7 @@ function FeaturedTraitsCards() {
 
       <div className="relative max-w-7xl mx-auto">
         {/* Section Header */}
-        <div ref={titleRef} className="text-center mb-16">
+        <div ref={titleRef} className="title-ref text-center mb-16">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-2 h-2 bg-pink-100 rounded-full animate-pulse" />
             <span className="text-sm font-medium text-blue-50 uppercase tracking-wider">
