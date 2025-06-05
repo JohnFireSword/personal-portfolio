@@ -164,7 +164,31 @@ export const projects = [
   color: "from-blue-400 to-blue-600",
    videoUrl: "/images/videos/more-demo.mp4", 
   accent: "#2563eb"
+},
+{
+  id: 8,
+  title: "Wallet App UI",
+  category: "Mobile App",
+  description: "A mobile wallet interface for managing services and payments.",
+  longDescription:
+    "This app offers a central dashboard for managing digital services like email, hosting, and domains. Users can track payments, access invoices, and monitor usage in a clean, responsive Flutter UI. It connects to a Firebase backend with RESTful APIs built in PHP.",
+  technologies: ["Flutter", "Firebase", "REST API", "PHP"],
+  features: [
+    "Service overview dashboard (emails, hosting, domains)",
+    "Payment tracking with invoice access",
+    "Email account management",
+    "Storage monitoring and alerts"
+  ],
+  displayType: "mobile",
+  mockupImage: "",
+  demoUrl: "",
+   githubUrl: "https://github.com/JohnFireSword/wallet_app_ui",
+  status: "Live",
+  color: "from-indigo-400 to-blue-600",
+  accent: "#3b82f6",
+    videoUrl: "/images/videos/wallet-app.mp4", 
 }
+
 ,
 ];
 
