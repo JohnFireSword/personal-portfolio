@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import { useState, useEffect, useRef } from "react";
 import NavigationArrow from "../components/NavArrow";
+import PhoneMockupVideo from "../mockups/PhoneMockupVideo";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -81,64 +82,63 @@ function ProjectsSection() {
   // Navigation functions with smooth transitions
   const navigateProject = (direction) => {
     if (isTransitioning) return;
-    
+
     setIsTransitioning(true);
-    
+
     // Animate out current content
     gsap.to(projectContentRef.current, {
       opacity: 0,
-      x: direction === 'next' ? -50 : 50,
+      x: direction === "next" ? -50 : 50,
       duration: 0.3,
       ease: "power2.out",
       onComplete: () => {
         // Update project index
-        if (direction === 'next') {
-          setActiveProject((prev) => 
+        if (direction === "next") {
+          setActiveProject((prev) =>
             prev < filteredProjects.length - 1 ? prev + 1 : 0
           );
         } else {
-          setActiveProject((prev) => 
+          setActiveProject((prev) =>
             prev > 0 ? prev - 1 : filteredProjects.length - 1
           );
         }
-        
+
         // Animate in new content
-        gsap.fromTo(projectContentRef.current, 
-          { 
-            opacity: 0, 
-            x: direction === 'next' ? 50 : -50 
+        gsap.fromTo(
+          projectContentRef.current,
+          {
+            opacity: 0,
+            x: direction === "next" ? 50 : -50,
           },
           {
             opacity: 1,
             x: 0,
             duration: 0.4,
             ease: "power2.out",
-            onComplete: () => setIsTransitioning(false)
+            onComplete: () => setIsTransitioning(false),
           }
         );
-
-       
-      }
+      },
     });
   };
 
-  const handlePrevious = () => navigateProject('prev');
-  const handleNext = () => navigateProject('next');
+  const handlePrevious = () => navigateProject("prev");
+  const handleNext = () => navigateProject("next");
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e) => {
-      if (e.key === 'ArrowLeft') {
+      if (e.key === "ArrowLeft") {
         e.preventDefault();
         handlePrevious();
-      } else if (e.key === 'ArrowRight') {
+      } else if (e.key === "ArrowRight") {
         e.preventDefault();
         handleNext();
       }
     };
 
-    window.addEventListener('keydown', handleKeyPress);
-    return () => window.removeEventListener('keydown', handleKeyPress);
+    window.addEventListener("keydown", handleKeyPress);
+    return () => window.removeEventListener("keydown", handleKeyPress);
   }, [filteredProjects.length]);
 
   return (
@@ -173,7 +173,7 @@ function ProjectsSection() {
         title="Recent Projects"
         sub="My Projects 📽️"
       />
-      
+
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -182,9 +182,10 @@ function ProjectsSection() {
               key={category}
               onClick={() => setActiveCategory(category)}
               className={`cursor-pointer px-6 py-3 rounded-xl border border-slate-500 text-white font-medium group transition-all duration-300
-                ${activeCategory === category
-                  ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
-                  : "bg-gray-800 text-gray-300 hover:bg-gray-700"
+                ${
+                  activeCategory === category
+                    ? "bg-pink-500 text-white shadow-lg shadow-pink-500/25"
+                    : "bg-gray-800 text-gray-300 hover:bg-gray-700"
                 }
               `}>
               <div className="relative overflow-hidden h-6">
@@ -205,32 +206,41 @@ function ProjectsSection() {
             {/* Navigation Arrows */}
             <div className="absolute nav-arrow left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10">
               <NavigationArrow
-                direction="left" 
+                direction="left"
                 onClick={handlePrevious}
                 disabled={filteredProjects.length <= 1}
               />
             </div>
-            
+
             <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10">
               <NavigationArrow
-                direction="right" 
+                direction="right"
                 onClick={handleNext}
                 disabled={filteredProjects.length <= 1}
               />
             </div>
 
             {/* Project Content */}
-            <div 
+            <div
               ref={projectContentRef}
-              className="grid lg:grid-cols-2 gap-12 items-center px-8"
-            >
+              className="grid lg:grid-cols-2 gap-12 items-center px-8">
               {/* Device Mockups */}
-              <div className={`transition-all duration-1000 ${
-                isVisible ? "translate-x-0 opacity-100" : "-translate-x-10 opacity-0"
-              }`}>
+              <div
+                className={`transition-all duration-1000 ${
+                  isVisible
+                    ? "translate-x-0 opacity-100"
+                    : "-translate-x-10 opacity-0"
+                }`}>
                 {currentProject.displayType === "mobile" && (
                   <div className="flex justify-center">
-                    <PhoneMockup project={currentProject} isActive={true} />
+                    {currentProject.videoUrl ? (
+                      <PhoneMockupVideo
+                        project={currentProject}
+                        isActive={true}
+                      />
+                    ) : (
+                      <PhoneMockup project={currentProject} />
+                    )}
                   </div>
                 )}
 
@@ -239,7 +249,6 @@ function ProjectsSection() {
                     <DesktopMockup project={currentProject} isActive={true} />
                   </div>
                 )}
-
                 {currentProject.displayType === "both" && (
                   <div className="flex items-center justify-center gap-8">
                     <DesktopMockup project={currentProject} isActive={true} />
@@ -250,7 +259,9 @@ function ProjectsSection() {
               {/* Project Info */}
               <div
                 className={`transition-all mr-10 duration-1000 ${
-                  isVisible ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
+                  isVisible
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-10 opacity-0"
                 }`}
                 style={{ transitionDelay: "200ms" }}>
                 <ProjectInfoPanel project={currentProject} />
@@ -267,7 +278,7 @@ function ProjectsSection() {
             <span>/</span>
             <span>{filteredProjects.length}</span>
           </div>
-          
+
           {/* Dot Indicators */}
           <div className="flex gap-3">
             {filteredProjects.map((_, index) => (
@@ -278,8 +289,7 @@ function ProjectsSection() {
                   activeProject === index
                     ? "bg-pink-500 scale-125"
                     : "bg-gray-600 hover:bg-gray-500"
-                }`}
-              >
+                }`}>
                 {activeProject === index && (
                   <div className="absolute inset-0 rounded-full bg-pink-500 animate-ping opacity-25"></div>
                 )}
@@ -290,8 +300,12 @@ function ProjectsSection() {
           {/* Keyboard Hint */}
           <div className="hidden md:flex items-center gap-2 text-xs text-gray-500">
             <span>Use</span>
-            <kbd className="px-2 py-1 bg-gray-800 rounded border border-gray-600">←</kbd>
-            <kbd className="px-2 py-1 bg-gray-800 rounded border border-gray-600">→</kbd>
+            <kbd className="px-2 py-1 bg-gray-800 rounded border border-gray-600">
+              ←
+            </kbd>
+            <kbd className="px-2 py-1 bg-gray-800 rounded border border-gray-600">
+              →
+            </kbd>
             <kbd></kbd>
             <span>keys</span>
           </div>
@@ -314,7 +328,9 @@ function ProjectsSection() {
                 }`}>
                 <div
                   className={`w-full h-32 bg-gradient-to-r ${project.color} rounded-lg mb-4 flex items-center justify-center relative overflow-hidden`}>
-                  <span className="text-white font-bold z-10">{project.title}</span>
+                  <span className="text-white font-bold z-10">
+                    {project.title}
+                  </span>
                   {activeProject === index && (
                     <div className="absolute inset-0 bg-pink-500/20 animate-pulse"></div>
                   )}

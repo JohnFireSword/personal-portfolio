@@ -20,7 +20,9 @@ export const projects = [
   color: "from-blue-400 to-blue-600",
   status: "Live",
   color: "from-indigo-400 to-blue-600",
-   accent: "#3b82f6"
+   accent: "#3b82f6",
+  
+
 }
 ,
   {
@@ -59,7 +61,7 @@ export const projects = [
     "Offline support with local database syncing",
     "Secure user authentication and cloud backup"
   ],
-  mockupImage: "/images/mockups/timetamer.png",
+
   displayType: "mobile",
   images: {
     mobile: ""
@@ -68,7 +70,8 @@ export const projects = [
   githubUrl: "https://github.com/JohnFireSword/notes", 
   status: "Thesis project",
   color: "from-indigo-400 to-blue-600",
-  accent: "#3b82f6"
+  accent: "#3b82f6",
+  videoUrl: "/images/videos/timetamer-demo.mp4", 
 }
 ,
   {
@@ -159,6 +162,7 @@ export const projects = [
   demoUrl: "",  // add real demo URL if available
   githubUrl: "",  // add GitHub link if available
   color: "from-blue-400 to-blue-600",
+   videoUrl: "/images/videos/more-demo.mp4", 
   accent: "#2563eb"
 }
 ,
