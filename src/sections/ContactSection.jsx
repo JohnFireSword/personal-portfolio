@@ -191,7 +191,7 @@ const ContactPage = () => {
                   backgroundSize: "200% 200%",
                   animation: "gradientShift 3s ease-in-out infinite",
                 }}>
-                Connect
+                Make It Real
               </span>
             </h1>
             <p className="text-xl text-gray-300 max-w-md leading-relaxed">

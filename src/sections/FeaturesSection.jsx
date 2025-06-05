@@ -38,75 +38,73 @@ function FeaturedTraitsCards() {
   // Memoize traits to prevent unnecessary re-renders
   const memoizedTraits = useMemo(() => traits, []);
 
-useGSAP(() => {
-  // Title text animation using SplitText
-  SplitText.create(titleRef, {
-    type: "words,chars",
-    onSplit(self) {
-      gsap.from(self.chars, {
-        autoAlpha: 0,
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.05,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: titleRef.current,
-          start: "top 80%",
-        },
-      });
-    },
-  });
-
-  // Cards animation in sequence
-  cardsRef.current.forEach((card, i) => {
-    if (!card) return;
-    gsap.fromTo(
-      card,
-      {
-        opacity: 0,
-        y: 40,
-        scale: 0.95,
+  useGSAP(() => {
+    // Title text animation using SplitText
+    SplitText.create(titleRef, {
+      type: "words,chars",
+      onSplit(self) {
+        gsap.from(self.chars, {
+          autoAlpha: 0,
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+          },
+        });
       },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        delay: i * 0.08,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-          once: true,
+    });
+
+    // Cards animation in sequence
+    cardsRef.current.forEach((card, i) => {
+      if (!card) return;
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          y: 40,
+          scale: 0.95,
         },
-      }
-    );
-  });
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          delay: i * 0.08,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    });
 
-  // CTA animation
-  const cta = containerRef.current?.querySelector(".cta-button");
-  if (cta) {
-    gsap.fromTo(
-      cta,
-      { autoAlpha: 0, y: 30 },
-      {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.8,
-        delay: 0.4,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: cta,
-          start: "top 90%",
-          once: true,
-        },
-      }
-    );
-  }
-}, []);
-
-
+    // CTA animation
+    const cta = containerRef.current?.querySelector(".cta-button");
+    if (cta) {
+      gsap.fromTo(
+        cta,
+        { autoAlpha: 0, y: 30 },
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.8,
+          delay: 0.4,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cta,
+            start: "top 90%",
+            once: true,
+          },
+        }
+      );
+    }
+  }, []);
 
   return (
     <section
@@ -161,14 +159,17 @@ useGSAP(() => {
         </div>
 
         {/* Call to action */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-100/10 to-purple-100/10 border border-pink-100/20 hover:border-pink-100/40 transition-all duration-200 group cursor-pointer">
-            <Heart className="w-5 h-5 text-pink-100 group-hover:scale-105 transition-transform duration-200" />
-            <span className="text-white-50 font-medium">
-              Let's Create Something Amazing Together
-            </span>
+        <a href="#contact">
+          {" "}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-pink-100/10 to-purple-100/10 border border-pink-100/20 hover:border-pink-100/40 transition-all duration-200 group cursor-pointer">
+              <Heart className="w-5 h-5 text-pink-100 group-hover:scale-105 transition-transform duration-200" />
+              <span className="text-white-50 font-medium">
+                Let's Create Something Amazing Together
+              </span>
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </section>
   );
