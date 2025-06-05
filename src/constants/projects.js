@@ -15,7 +15,7 @@ export const projects = [
 
   ],
   displayType: "mobile",
-  mockupImage: "images/mockups/ihub2-shot.png",
+  mockupImage: "/images/mockups/ihub2-shot.png",
   demoUrl: "https://iservices.gr/iservices-hub-application/", 
   color: "from-blue-400 to-blue-600",
   status: "Live",
