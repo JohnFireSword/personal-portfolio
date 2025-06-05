@@ -199,42 +199,6 @@ const ContactPage = () => {
               together.
             </p>
           </div>
-
-          {/* Social Links */}
-          <div ref={socialRef} className="flex space-x-6">
-            {[
-              { name: "Email", icon: "✉️", href: "mailto:hello@example.com" },
-              { name: "LinkedIn", icon: "💼", href: "#" },
-              { name: "GitHub", icon: "🚀", href: "#" },
-              { name: "Twitter", icon: "🐦", href: "#" },
-            ].map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                className="w-14 h-14 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300 glow-effect"
-                style={{
-                  boxShadow: "0 0 20px rgba(246, 38, 175, 0.3)",
-                }}
-                onMouseEnter={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1.2,
-                    rotation: 360,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}
-                onMouseLeave={(e) => {
-                  gsap.to(e.target, {
-                    scale: 1,
-                    rotation: 0,
-                    duration: 0.3,
-                    ease: "power2.out",
-                  });
-                }}>
-                {social.icon}
-              </a>
-            ))}
-          </div>
         </div>
 
         {/* Right Side - Contact Form */}

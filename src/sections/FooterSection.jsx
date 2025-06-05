@@ -207,8 +207,8 @@ const PortfolioFooter = () => {
                 <a href="https://www.instagram.com/g.giwths/" target="_blank">
                   <div className="social-button">
                     <button className="relative w-12 h-12 rounded-full group">
-                      <div className="floater w-full h-full absolute top-0 left-0 bg-violet-400 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                      <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-violet-400 rounded-full">
+                      <div className="floater w-full h-full absolute top-0 left-0 bg-[#d62976] rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
+                      <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-[#d62976] rounded-full">
                         <svg
                           fill="none"
                           viewBox="0 0 22 22"
@@ -231,8 +231,8 @@ const PortfolioFooter = () => {
                   target="_blank">
                   <div className="social-button">
                     <button className="relative w-12 h-12 rounded-full group">
-                      <div className="floater w-full h-full absolute top-0 left-0 bg-cyan-400 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                      <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-cyan-400 rounded-full">
+                      <div className="floater w-full h-full absolute top-0 left-0 bg-[#0072b1] rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
+                      <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-[#0072b1] rounded-full">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           height="22"
@@ -250,8 +250,8 @@ const PortfolioFooter = () => {
                   {" "}
                   <div className="social-button">
                     <button className="relative w-12 h-12 rounded-full group">
-                      <div className="floater w-full h-full absolute top-0 left-0 bg-blue-500 rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
-                      <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-blue-500 rounded-full">
+                      <div className="floater w-full h-full absolute top-0 left-0 bg-[#8c9eff] rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
+                      <div className="icon relative z-10 w-full h-full flex items-center justify-center border-2 border-[#8c9eff] rounded-full">
                         <svg
                           viewBox="0 0 24 24"
                           height="22"
