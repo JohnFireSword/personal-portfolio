@@ -1,8 +1,5 @@
 import React from 'react'
 
-
-
-
 // Project Info Panel
 const ProjectInfoPanel = React.memo(({ project }) => {
   return (
@@ -53,6 +50,25 @@ const ProjectInfoPanel = React.memo(({ project }) => {
           ))}
         </div>
       </div>
+
+      {/* Collaborators */}
+      {project.collaborators && project.collaborators.length > 0 && (
+        <div className="mb-6">
+          <h4 className="text-pink-500 font-semibold mb-3">🤝 Collaborators</h4>
+          <div className="flex flex-wrap gap-2">
+            {project.collaborators.map((collaborator, i) => (
+              <a
+                key={i}
+                href={collaborator.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-1 rounded-full text-sm transition-colors duration-200 cursor-pointer">
+                {`Honors to ${collaborator.name} for contributing to the project alongside me.`}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Features */}
       <div>

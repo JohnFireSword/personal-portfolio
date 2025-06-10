@@ -11,7 +11,7 @@ export const traits = [
   {
     id: 2,
     title: "Frontend & App Developer",
-    description: "I build clean, responsive interfaces using techs like Angular, Flutter and React",
+    description: "I build clean, responsive interfaces mainly using techs like Angular, Flutter and React.",
     icon: "LayoutDashboard",
     color: "from-sky-300 to-indigo-200",
     bgColor: "from-sky-300/10 to-indigo-200/10",

@@ -91,7 +91,7 @@ export const projects = [
   {
     id: 4,
     title: "AI Content Studio",
-    category: "",
+    category: "Website",
     description:
       "AI-powered content creation platform helping marketers and creators generate, edit, and optimize content at scale.",
     longDescription:
@@ -122,26 +122,26 @@ export const projects = [
   },
   {
     id: 5,
-    title: "FitSync Companion",
+    title: "TimeTamer ",
     category: "Mobile & Web",
     description:
-      "Cross-platform fitness tracking with social features, workout plans, and nutrition guidance for a complete wellness experience.",
+      "Website and mobile app that altogether offer daily organization combining task management and notes for efficient personal productivity.",
     longDescription:
-      "FitSync Companion bridges the gap between mobile fitness tracking and web-based analytics. Track workouts on-the-go, analyze progress on desktop, and stay motivated with social features.",
-    technologies: [
-      "React Native",
-      "React",
-      "Node.js",
-      "MongoDB",
-      "AWS",
-      "HealthKit",
-    ],
+      "TimeTamer helps users manage daily tasks, take structured notes, and track priorities through an intuitive interface. The app supports secure user authentication, cloud sync, and offline access, designed to improve time management and organization.  ",
+    technologies: ["Angular", "Java Play", "Python"],
     features: [
-      "Cross-platform synchronization",
-      "Social workout challenges",
-      "AI nutrition recommendations",
-      "Wearable device integration",
+      "Task creation with priority levels and deadlines",
+      "Rich-text note-taking with categorization",
+      "Offline support with local database syncing",
+      "Secure user authentication and cloud backup",
     ],
+  collaborators: [
+    {
+      name: "John Doe",
+      link: "https://marioshkembi.com/"
+    },
+   
+  ],
     displayType: "both",
     images: {
       mobile: "/project-mobile-5.jpg",
@@ -156,7 +156,7 @@ export const projects = [
   {
     id: 6,
     title: "SmartHome Hub",
-    category: "IoT Dashboard",
+    category: "Website",
     description:
       "Comprehensive smart home management system with device control, automation, and energy monitoring capabilities.",
     longDescription:
@@ -187,7 +187,7 @@ export const projects = [
   },
   {
     id: 7,
-    title: "CorfuBee",
+    title: "CorfuBee (Drivers)",
     category: "Mobile App",
     description:
       "A Flutter app for booking reliable transport services in Corfu, Greece.",
@@ -204,9 +204,10 @@ export const projects = [
     mockupImage: "images/mockups/corfu-bee-shot.png",
     demoUrl: "", // add real demo URL if available
     githubUrl: "", // add GitHub link if available
-    color: "from-blue-400 to-blue-600",
+
     videoUrl: "/images/videos/more-demo.mp4",
-    accent: "#2563eb",
+    color: "from-red-500 to-pink-500",
+    accent: "#ef4444",
   },
   {
     id: 8,
@@ -228,8 +229,8 @@ export const projects = [
     demoUrl: "",
     githubUrl: "https://github.com/JohnFireSword/wallet_app_ui",
     status: "Live",
-    color: "from-indigo-400 to-blue-600",
-    accent: "#3b82f6",
+    color: "from-purple-500 to-pink-500",
+    accent: "#ef4444",
     videoUrl: "/images/videos/wallet-app.mp4",
   },
 ];
@@ -237,9 +238,10 @@ export const projects = [
 export const projectCategories = [
   "All Projects",
   "Mobile App",
-  "Web Application",
-  "SaaS Platform",
-  "IoT Dashboard",
+  "Website",
+  // "Web Application",
+  // "SaaS Platform",
+  // "IoT Dashboard",
   "Mobile & Web",
 ];
 
