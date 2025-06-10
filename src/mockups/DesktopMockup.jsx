@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const DesktopMockup = React.memo(({ project, isActive }) => {
   return (
@@ -23,32 +23,8 @@ const DesktopMockup = React.memo(({ project, isActive }) => {
           </div>
 
           {/* Website Content */}
-          <div className="h-full bg-gray-900 p-4">
-            {/* Header */}
-            <div
-              className={`w-full h-12 bg-gradient-to-r ${project.color} rounded-lg mb-3 flex items-center justify-center`}>
-              <span className="text-white font-bold text-sm">
-                {project.title}
-              </span>
-            </div>
-
-            {/* Content Grid */}
-            <div className="grid grid-cols-3 gap-2 mb-3">
-              <div className="h-8 bg-gray-800 rounded animate-pulse"></div>
-              <div className="h-8 bg-gray-700 rounded"></div>
-              <div className="h-8 bg-gray-800 rounded animate-pulse"></div>
-            </div>
-
-            {/* Main Content */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="space-y-2">
-                <div className="h-2 bg-gray-700 rounded w-full"></div>
-                <div className="h-2 bg-gray-700 rounded w-3/4"></div>
-                <div className="h-2 bg-gray-700 rounded w-1/2"></div>
-              </div>
-              <div
-                className={`h-16 bg-gradient-to-r ${project.color} opacity-30 rounded-lg`}></div>
-            </div>
+          <div className="h-full bg-gray-900">
+            <img src={project.mockup} alt="mockup" />
           </div>
         </div>
 
@@ -67,4 +43,4 @@ const DesktopMockup = React.memo(({ project, isActive }) => {
   );
 });
 
-export default DesktopMockup
+export default DesktopMockup;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 // Project Info Panel
 const ProjectInfoPanel = React.memo(({ project }) => {
@@ -18,17 +18,27 @@ const ProjectInfoPanel = React.memo(({ project }) => {
             href={project.demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1 bg-gray-400 hover:bg-gray-100 rounded-lg transition-colors"
-            >
-            <span className="text-green-400"><img src="/images/svg/projects/play-arrow.svg" className='w-8 align-center' alt="" /></span>
+            className="p-1 bg-gray-400 hover:bg-gray-100 rounded-lg transition-colors">
+            <span className="text-green-400">
+              <img
+                src="/images/svg/projects/play-arrow.svg"
+                className="w-8 align-center"
+                alt=""
+              />
+            </span>
           </a>
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1 bg-gray-400 hover:bg-gray-100 rounded-lg transition-colors"
-            >
-            <span className="align-center items-center justify-center"><img className='w-8 align-center text-center bg-white rounded-full' src="/images/svg/skills/github.svg" alt="Github logo" /></span>
+            className="p-1 bg-gray-400 hover:bg-gray-100 rounded-lg transition-colors">
+            <span className="align-center items-center justify-center">
+              <img
+                className="w-8 align-center text-center bg-white rounded-full"
+                src="/images/svg/skills/github.svg"
+                alt="Github logo"
+              />
+            </span>
           </a>
         </div>
       </div>
@@ -62,7 +72,7 @@ const ProjectInfoPanel = React.memo(({ project }) => {
                 href={collaborator.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white px-3 py-1 rounded-full text-sm transition-colors duration-200 cursor-pointer">
+                className="  text-gray-300 hover:text-blue-300 px-3 py-1 rounded-full text-sm transition-colors duration-200 cursor-pointer">
                 {`Honors to ${collaborator.name} for contributing to the project alongside me.`}
               </a>
             ))}
@@ -87,4 +97,4 @@ const ProjectInfoPanel = React.memo(({ project }) => {
   );
 });
 
-export default ProjectInfoPanel
+export default ProjectInfoPanel;

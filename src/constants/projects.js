@@ -23,37 +23,40 @@ export const projects = [
     accent: "#3b82f6",
     videoUrl: "/images/videos/hub-demo.mp4",
   },
+
   {
     id: 2,
-    title: "TaskFlow Dashboard",
-    category: "Web Application",
+    title: "Web-BIS Platform",
+    category: "Website",
     description:
-      "A comprehensive project management platform with real-time collaboration, advanced analytics, and team productivity insights.",
+      "A comprehensive business intelligence platform providing advanced analytics tools, financial reporting solutions, and educational resources for professionals and students in Greece.",
     longDescription:
-      "TaskFlow transforms team productivity with intuitive project management, real-time collaboration tools, and powerful analytics. Built for modern teams who need to stay connected and productive.",
+      "Web-BIS is a specialized business intelligence system designed to empower Greek businesses and professionals with cutting-edge analytics tools and financial insights. The platform combines data visualization, financial reporting, and educational content to support decision-making processes across various industries. Built with modern web technologies, it serves both enterprise clients and educational institutions seeking comprehensive BI solutions.",
     technologies: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Redis",
-      "Socket.io",
+      "WordPress",
+      "Elementor",
+      "JavaScript",
+      "Responsive Design",
+      "SEO Optimization",
     ],
     features: [
-      "Real-time collaborative editing",
-      "Advanced project analytics",
-      "Custom workflow automation",
-      "Team performance tracking",
+      "Interactive financial dashboards and reporting",
+      "Advanced data visualization and analytics",
+      "Educational modules for BI training",
+
+      "Real-time data processing and insights",
+
+      "User management and role-based access",
     ],
     displayType: "desktop",
     images: {
       desktop: "/project-desktop-2.jpg",
     },
-    demoUrl: "https://taskflow-demo.com",
-    githubUrl: "https://github.com/johndoe/taskflow",
+    mockup: "/images/mockups/webbis.png",
+    demoUrl: "https://web-bis.com/",
     status: "Live",
-    color: "from-blue-500 to-purple-600",
-    accent: "#3b82f6",
+    color: "from-blue-600 to-indigo-700",
+    accent: "#2563eb",
   },
   {
     id: 3,
@@ -90,35 +93,51 @@ export const projects = [
   },
   {
     id: 4,
-    title: "AI Content Studio",
+    title: "Taste in Greece",
     category: "Website",
     description:
-      "AI-powered content creation platform helping marketers and creators generate, edit, and optimize content at scale.",
+      "A comprehensive culinary tourism platform showcasing authentic Greek cuisine, traditional recipes, and gastronomic experiences across Greece's diverse regions.",
     longDescription:
-      "AI Content Studio empowers creators with cutting-edge AI tools for content generation, editing, and optimization. From blog posts to social media content, create professional content in minutes.",
+      "Taste in Greece is a digital gateway to Greece's rich culinary heritage, offering visitors an immersive journey through traditional Greek gastronomy. The platform features authentic recipes, regional specialties, restaurant recommendations, and cultural insights that connect food lovers with Greece's vibrant culinary traditions. Built with modern web technologies, it provides an engaging user experience that celebrates the Mediterranean diet and Greek hospitality.",
     technologies: [
-      "Next.js",
-      "Python",
-      "OpenAI API",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
+      "WordPress",
+      "Elementor",
+      "JavaScript",
+      "Responsive Design",
+      "SEO Optimization",
     ],
     features: [
-      "AI-powered content generation",
-      "Multi-format export options",
-      "SEO optimization tools",
-      "Team collaboration workspace",
+      "Interactive recipe collection with traditional Greek dishes",
+      "Regional cuisine exploration and food maps",
+      "Cultural storytelling through food heritage",
+      "Mobile-responsive design for travelers",
+      "Multi-language support (Greek/English)",
+      "Blog section for culinary insights and tips",
     ],
     displayType: "desktop",
     images: {
-      desktop: "/project-desktop-4.jpg",
+      desktop: "/images/mockups/tasteingreece.png",
     },
-    demoUrl: "https://aicontentstudio-demo.com",
-    githubUrl: "https://github.com/johndoe/ai-content-studio",
+    mockup: "/images/mockups/tasteingreece.png",
+    demoUrl: "https://tasteingreece.com/en/",
+    githubUrl: "https://github.com/giannisgiotis/taste-in-greece", // Update with your actual GitHub repo
     status: "Live",
-    color: "from-purple-500 to-pink-600",
-    accent: "#a855f7",
+    color: "from-blue-500 to-emerald-600", // Changed to reflect Greek colors (blue like the flag/sea, green like olives)
+    accent: "#059669", // Emerald green accent
+    achievements: [
+      "Showcases authentic Greek culinary traditions",
+      "Responsive design optimized for mobile travelers",
+      "SEO-optimized for Greek food and travel searches",
+      "Bilingual platform serving international audience",
+    ],
+    challenges: [
+      "Organizing vast collection of traditional recipes",
+      "Creating engaging visual presentation of food content",
+      "Implementing effective SEO for culinary tourism",
+      "Balancing cultural authenticity with modern web design",
+    ],
+    impact:
+      "Connects international food enthusiasts with authentic Greek cuisine and promotes cultural tourism through gastronomy",
   },
   {
     id: 5,
@@ -135,55 +154,44 @@ export const projects = [
       "Offline support with local database syncing",
       "Secure user authentication and cloud backup",
     ],
-  collaborators: [
-    {
-      name: "John Doe",
-      link: "https://marioshkembi.com/"
-    },
-   
-  ],
-    displayType: "both",
-    images: {
-      mobile: "/project-mobile-5.jpg",
-      desktop: "/project-desktop-5.jpg",
-    },
-    demoUrl: "https://fitsync-demo.com",
-    githubUrl: "https://github.com/johndoe/fitsync",
-    status: "Live",
-    color: "from-red-500 to-pink-500",
+    collaborators: [
+      {
+        name: "Mario Shkembi",
+        link: "https://marioshkembi.com/",
+      },
+    ],
+    displayType: "desktop",
+
+    mockup: "/images/mockups/timetamer-dash.png",
+    demoUrl: "",
+    githubUrl: "",
+    status: "Under Development",
+    color: "from-gray-500 to-pink-500",
     accent: "#ef4444",
   },
   {
     id: 6,
-    title: "SmartHome Hub",
+    title: "Anime Database Hub",
     category: "Website",
     description:
-      "Comprehensive smart home management system with device control, automation, and energy monitoring capabilities.",
+      "A comprehensive anime database and tracking system built with React, featuring detailed anime information, user lists, and discovery tools for anime enthusiasts.",
     longDescription:
-      "SmartHome Hub centralizes all your IoT devices into one intuitive dashboard. Control lights, temperature, security, and monitor energy usage with advanced automation rules.",
-    technologies: [
-      "Vue.js",
-      "Python",
-      "MQTT",
-      "InfluxDB",
-      "Docker",
-      "Raspberry Pi",
-    ],
+      "Anime Database Hub is a modern web application that serves as a complete anime tracking and discovery platform. It was one of my first projects back in 2018.",
+    technologies: ["React", "JavaScript", "Jikan API", "Responsive Design"],
     features: [
-      "Multi-device compatibility",
-      "Custom automation rules",
-      "Energy usage analytics",
-      "Voice control integration",
+      "Comprehensive anime database with detailed information",
+
+      "Advanced search and filtering capabilities",
+
+      "Integration with MyAnimeList API (Jikan)",
     ],
     displayType: "desktop",
-    images: {
-      desktop: "/project-desktop-6.jpg",
-    },
-    demoUrl: "https://smarthome-demo.com",
-    githubUrl: "https://github.com/johndoe/smarthome-hub",
+    mockup: "/images/mockups/anime-list.png",
+    demoUrl: "https://johnfiresword.github.io/",
+    githubUrl: "https://github.com/JohnFireSword/JohnFireSword.github.io",
     status: "Live",
-    color: "from-indigo-500 to-blue-600",
-    accent: "#6366f1",
+    color: "from-purple-500 to-pink-600",
+    accent: "#a855f7",
   },
   {
     id: 7,
