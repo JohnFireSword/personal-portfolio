@@ -7,7 +7,7 @@ const DesktopMockup = React.memo(({ project, isActive }) => {
         isActive ? "scale-105" : "scale-95 opacity-70"
       }`}>
       {/* MacBook Frame */}
-      <div className="relative mx-auto w-96 h-64">
+      <div className="relative mx-auto xl:w-96 xl:h-64">
         {/* Screen */}
         <div className="relative w-full h-48 bg-gray-900 rounded-t-lg overflow-hidden shadow-xl border border-gray-700">
           {/* Browser Chrome */}

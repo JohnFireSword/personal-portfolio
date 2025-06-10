@@ -3,10 +3,13 @@ import React from "react";
 // Project Info Panel
 const ProjectInfoPanel = React.memo(({ project }) => {
   return (
-    <div className="bg-black-100 border border-gray-700 rounded-2xl ml-6 p-6 h-full">
+   <div className="bg-black-100 border border-gray-700 rounded-2xl p-4 sm:p-5 md:p-6 lg:p-8 xl:p-10 
+                mx-auto ml-0  max-w-md sm:max-w-lg md:max-w-2xl xl:max-w-xl">
+
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="text-2xl font-bold text-white mb-2">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+
             {project.title}
           </h3>
           <span className="px-3 py-1 rounded-full text-sm font-medium text-white bg-blue-600">
@@ -43,7 +46,7 @@ const ProjectInfoPanel = React.memo(({ project }) => {
         </div>
       </div>
 
-      <p className="text-gray-300 mb-6 leading-relaxed">
+     <p className="text-gray-300 mb-6 leading-relaxed text-sm sm:text-base">  
         {project.longDescription}
       </p>
 
@@ -54,7 +57,7 @@ const ProjectInfoPanel = React.memo(({ project }) => {
           {project.technologies.map((tech, i) => (
             <span
               key={i}
-              className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm">
+              className="bg-gray-800 text-gray-300 px-2 py-0.5 rounded-full text-sm sm:text-sm">
               {tech}
             </span>
           ))}
@@ -83,7 +86,7 @@ const ProjectInfoPanel = React.memo(({ project }) => {
       {/* Features */}
       <div>
         <h4 className="text-pink-500 font-semibold mb-3">✨ Key Features</h4>
-        <ul className="space-y-2">
+      <ul className="space-y-1 text-sm sm:text-base">
           {project.features.map((feature, i) => (
             <li key={i} className="text-gray-300 flex items-center gap-2">
               <div

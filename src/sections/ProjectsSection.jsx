@@ -204,26 +204,27 @@ function ProjectsSection() {
         {currentProject && (
           <div className="relative">
             {/* Navigation Arrows */}
-            <div className="absolute nav-arrow left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10">
-              <NavigationArrow
-                direction="left"
-                onClick={handlePrevious}
-                disabled={filteredProjects.length <= 1}
-              />
-            </div>
+           {/* Navigation Arrows */}
+<div className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10">
+  <NavigationArrow
+    direction="left"
+    onClick={handlePrevious}
+    disabled={filteredProjects.length <= 1}
+  />
+</div>
 
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10">
-              <NavigationArrow
-                direction="right"
-                onClick={handleNext}
-                disabled={filteredProjects.length <= 1}
-              />
-            </div>
+<div className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10">
+  <NavigationArrow
+    direction="right"
+    onClick={handleNext}
+    disabled={filteredProjects.length <= 1}
+  />
+</div>
 
             {/* Project Content */}
             <div
               ref={projectContentRef}
-              className="grid lg:grid-cols-2 gap-12 items-center px-8">
+              className="flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center px-4 md:px-8">
               {/* Device Mockups */}
               <div
                 className={`transition-all duration-1000 ${
@@ -254,7 +255,7 @@ function ProjectsSection() {
 
               {/* Project Info */}
               <div
-                className={`transition-all mr-10 duration-1000 ${
+                className={`transition-all duration-1000 w-full lg:mr-10  px-2 sm:px-4 ${
                   isVisible
                     ? "translate-x-0 opacity-100"
                     : "translate-x-10 opacity-0"
@@ -312,7 +313,8 @@ function ProjectsSection() {
           <h3 className="text-2xl font-bold text-white text-center mb-8">
             All Projects Overview
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
