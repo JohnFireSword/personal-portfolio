@@ -233,14 +233,10 @@ function ProjectsSection() {
                 }`}>
                 {currentProject.displayType === "mobile" && (
                   <div className="flex justify-center">
-                    {currentProject.videoUrl ? (
-                      <PhoneMockupVideo
-                        project={currentProject}
-                        isActive={true}
-                      />
-                    ) : (
-                      <PhoneMockup project={currentProject} />
-                    )}
+                    <PhoneMockupVideo
+                      project={currentProject}
+                      isActive={true}
+                    />
                   </div>
                 )}
 

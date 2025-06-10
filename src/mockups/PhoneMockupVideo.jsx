@@ -61,7 +61,7 @@ const PhoneMockupVideo = ({ project, isActive }) => {
                 <video
                   key={`video-${project.id}`}
                   ref={videoRef}
-                  className="w-full h-full object-cover"
+                  className="w-full xl:h-[33rem] object-cover"
                   loop
                   muted
                   playsInline
