@@ -35,7 +35,7 @@ export const experiences = [
   ],
   "color": "from-blue-150 to-blue-50",
   "icon": "💻",
-  "logoPath": "public/images/experience-icons/programming.png"
+  "logoPath": "/images/experience-icons/programming.png"
 }
 ,
   {
@@ -53,7 +53,7 @@ export const experiences = [
     ],
     color: "from-purple-100 to-blue-100",
     icon: "🎓",
-     logoPath: "public/images/experience-icons/graduated.png",
+     logoPath: "/images/experience-icons/graduated.png",
   },
   
 ];
