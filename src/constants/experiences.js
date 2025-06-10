@@ -11,14 +11,14 @@ export const experiences = [
 
     technologies: ["Flutter", "WordPress", "Firebase", "Geolocation", "PhP"],
     achievements: [
-  "Delivered a stable MVP with real-time tracking and request handling",
+  "Co-developed an app with real-time tracking and request handling",
   "Optimized background location updates with minimal battery impact",
   "Built a flexible driver interface supporting transfer grouping and status updates"
     ],
     color: "from-pink-500 to-purple-100",
     icon: "📲",
   
-    logoPath: "/images/svg/skills/dart.svg",
+    logoPath: "/images/experience-icons/app-development.png",
   },
 {
   "id": 2,
@@ -29,13 +29,13 @@ export const experiences = [
   "description": "Built responsive, user-friendly interfaces using WordPress with Elementor. Started mobile app development using Flutter.",
   "technologies": ["WordPress", "Elementor", "HTML", "CSS", "JavaScript", "Flutter", "Java"],
   "achievements": [
-    "Co-developed a customer app for managing payments, email, services, storage, and support tickets.",
+    "Developed a customer app for managing payments, email, services, storage, and support tickets.",
     "Contributed to several projects solving problems like load times, bugs and deficiencies.",
     "Supported digital marketing efforts, including SEO."
   ],
   "color": "from-blue-150 to-blue-50",
   "icon": "💻",
-  "logoPath": "/images/svg/skills/html.svg"
+  "logoPath": "public/images/experience-icons/programming.png"
 }
 ,
   {
@@ -53,7 +53,7 @@ export const experiences = [
     ],
     color: "from-purple-100 to-blue-100",
     icon: "🎓",
-     logoPath: "/images/svg/skills/python.svg",
+     logoPath: "public/images/experience-icons/graduated.png",
   },
   
 ];
