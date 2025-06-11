@@ -165,7 +165,7 @@ const PortfolioFooter = () => {
               {navLinks.map((link, index) => (
                 <a
                   key={index}
-                  href={link.href}
+                  href={link.link}
                   className="block text-gray-400 hover:text-pink-500 transition-colors duration-300 hover:translate-x-2 transform"
                   onMouseEnter={(e) => {
                     gsap.to(e.target, {

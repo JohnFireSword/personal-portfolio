@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ text, className, id }) => {
   return (
-    <a 
+    <a href="#"
     onClick={(e)=>
     {e.preventDefault();
 

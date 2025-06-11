@@ -6,7 +6,7 @@ import gsap from "gsap";
 
 const Hero = () => {
   useGSAP(() => {
-     if (window.innerWidth < 768) return;
+    if (window.innerWidth < 768) return;
     // Enhanced lottie animation with bounce effect
     gsap.from(".lottie", {
       scale: 0.1,
@@ -47,7 +47,6 @@ const Hero = () => {
         delay: 0.8,
       }
     );
-   
 
     // Floating animation for lottie
     gsap.to(".lottie", {
