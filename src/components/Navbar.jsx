@@ -17,7 +17,7 @@ function Navbar() {
         }
         return false;
       });
-      setActiveSection(current || "");
+     
     };
 
     window.addEventListener("scroll", handleScroll);

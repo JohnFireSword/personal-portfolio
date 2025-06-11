@@ -30,7 +30,7 @@ const PortfolioFooter = () => {
     const ctx = gsap.context(() => {
       // Wave animation
       gsap.to(waveRef.current, {
-        backgroundPositionX: "200%",
+        backgroundPositionX: "100%",
         duration: 20,
         ease: "none",
         repeat: -1,
@@ -72,18 +72,8 @@ const PortfolioFooter = () => {
             ease: "back.out(1.7)",
           });
 
-          // Links stagger animation
-          gsap.from(linksRef.current.children, {
-            y: 30,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.1,
-            ease: "power2.out",
-            delay: 0.3,
-          });
-
           // Social icons animation
-          gsap.from(socialRef.current.children, {
+          gsap.from(socialRef.current, {
             scale: 0,
             rotation: 360,
             duration: 0.8,
@@ -205,7 +195,7 @@ const PortfolioFooter = () => {
               Let's Connect
             </h4>
             <div className="flex flex-wrap gap-3">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4" ref={socialRef}>
                 <a href="https://www.instagram.com/g.giwths/" target="_blank">
                   <div className="social-button">
                     <button className="relative w-12 h-12 rounded-full group">
