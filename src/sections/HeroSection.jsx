@@ -6,6 +6,7 @@ import gsap from "gsap";
 
 const Hero = () => {
   useGSAP(() => {
+     if (window.innerWidth < 768) return;
     // Enhanced lottie animation with bounce effect
     gsap.from(".lottie", {
       scale: 0.1,
@@ -46,6 +47,7 @@ const Hero = () => {
         delay: 0.8,
       }
     );
+   
 
     // Floating animation for lottie
     gsap.to(".lottie", {
@@ -78,8 +80,7 @@ const Hero = () => {
                     {words.map((word) => (
                       <span
                         key={word.text}
-                        className="flex items-center md:gap-3 gap-1 pb-2"
-                      >
+                        className="flex items-center md:gap-3 gap-1 pb-2">
                         <img
                           src={word.imgPath}
                           alt={word.text}

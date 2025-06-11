@@ -7,9 +7,9 @@ const DesktopMockup = React.memo(({ project, isActive }) => {
         isActive ? "scale-105" : "scale-95 opacity-70"
       }`}>
       {/* MacBook Frame */}
-      <div className="relative mx-auto xl:w-96 xl:h-64">
+      <div className="relative mx-auto w-[18rem] h-[12rem] sm:w-[22rem] sm:h-[14rem] md:w-[24rem] md:h-[15rem] lg:w-[26rem] lg:h-[16rem] xl:w-96 xl:h-64">
         {/* Screen */}
-        <div className="relative w-full h-48 bg-gray-900 rounded-t-lg overflow-hidden shadow-xl border border-gray-700">
+        <div className="relative w-full md:h-50  bg-gray-900 rounded-t-lg overflow-hidden shadow-xl border border-gray-700">
           {/* Browser Chrome */}
           <div className="flex items-center gap-2 bg-gray-800 px-4 py-2 border-b border-gray-700">
             <div className="flex gap-1">

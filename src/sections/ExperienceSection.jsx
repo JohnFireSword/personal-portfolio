@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import TitleHeader from "../components/TitleHeader";
 import ExperienceCard from "../components/ExperienceCard";
@@ -12,6 +12,13 @@ gsap.registerPlugin(ScrollTrigger);
 const Experience = () => {
   const [scrollActiveId, setScrollActiveId] = useState(null);
   const [clickActiveId, setClickActiveId] = useState(null);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (isMobile && experiences.length > 0) {
+      setClickActiveId(experiences[0].id);
+    }
+  }, []);
 
   useGSAP(() => {
     gsap.utils.toArray(".timeline-card").forEach((card, index) => {
@@ -72,10 +79,7 @@ const Experience = () => {
         <img src="/section.svg" alt="background" />
       </div>
       <div className="w-full h-full md:px-20 px-5">
-        <TitleHeader
-          title="Past Experiences"
-          sub="My Career Overview 💼"
-        />
+        <TitleHeader title="Past Experiences" sub="My Career Overview 💼" />
 
         {/* Particle effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -121,7 +125,11 @@ const Experience = () => {
                       </div>
                       <div className=" flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                         <div className="timeline-logo bg-[#0d1224]  w-26">
-                          <img className="w-20" src={card.logoPath} alt="logo" />
+                          <img
+                            className="w-20"
+                            src={card.logoPath}
+                            alt="logo"
+                          />
                         </div>
                       </div>
                     </div>

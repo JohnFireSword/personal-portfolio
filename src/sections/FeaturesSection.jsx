@@ -38,7 +38,10 @@ function FeaturedTraitsCards() {
   // Memoize traits to prevent unnecessary re-renders
   const memoizedTraits = useMemo(() => traits, []);
 
+  
+
   useGSAP(() => {
+     if (window.innerWidth < 768) return;
     // Title text animation using SplitText
     SplitText.create(titleRef, {
       type: "words,chars",
@@ -60,6 +63,7 @@ function FeaturedTraitsCards() {
 
     // Cards animation in sequence
     cardsRef.current.forEach((card, i) => {
+       if (window.innerWidth < 768) return;
       if (!card) return;
       gsap.fromTo(
         card,
@@ -87,6 +91,7 @@ function FeaturedTraitsCards() {
     // CTA animation
     const cta = containerRef.current?.querySelector(".cta-button");
     if (cta) {
+       if (window.innerWidth < 768) return;
       gsap.fromTo(
         cta,
         { autoAlpha: 0, y: 30 },

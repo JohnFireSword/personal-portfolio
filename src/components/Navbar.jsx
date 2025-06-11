@@ -52,8 +52,8 @@ function Navbar() {
             ))}
           </ul>
         </nav>
-        <a href="#contact" className="contact-btn group">
-          <button className="cursor-pointershadow-[0px_4px_32px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
+        <a href="#contact" className="contact-btn group ">
+          <button className="cursor-pointer shadow-[0px_4px_8px_0_rgba(99,102,241,.70)] px-6 py-3 rounded-xl border-[1px] border-slate-500 text-white font-medium group">
             <div className="relative overflow-hidden">
               <p className="group-hover:-translate-y-7 duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
                 Contact me

@@ -204,22 +204,22 @@ function ProjectsSection() {
         {currentProject && (
           <div className="relative">
             {/* Navigation Arrows */}
-           {/* Navigation Arrows */}
-<div className="absolute -left-2 md:-left-4 top-1/2 -translate-y-1/2 z-10">
-  <NavigationArrow
-    direction="left"
-    onClick={handlePrevious}
-    disabled={filteredProjects.length <= 1}
-  />
-</div>
+            {/* Navigation Arrows */}
+            <div className="absolute -left-2 md:-left-4 md:top-1/2 top-1/5 -translate-y-1/2 z-10">
+              <NavigationArrow
+                direction="left"
+                onClick={handlePrevious}
+                disabled={filteredProjects.length <= 1}
+              />
+            </div>
 
-<div className="absolute -right-2 md:-right-4 top-1/2 -translate-y-1/2 z-10">
-  <NavigationArrow
-    direction="right"
-    onClick={handleNext}
-    disabled={filteredProjects.length <= 1}
-  />
-</div>
+            <div className="absolute -right-2 md:-right-4 md:top-1/2 top-1/5 -translate-y-1/2 z-10">
+              <NavigationArrow
+                direction="right"
+                onClick={handleNext}
+                disabled={filteredProjects.length <= 1}
+              />
+            </div>
 
             {/* Project Content */}
             <div
@@ -313,8 +313,7 @@ function ProjectsSection() {
           <h3 className="text-2xl font-bold text-white text-center mb-8">
             All Projects Overview
           </h3>
-       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}

@@ -1,5 +1,4 @@
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import { useState, useEffect, useRef } from "react";
@@ -14,6 +13,8 @@ const TitleHeader = ({ title, sub }) => {
   const lineRef = useRef(null);
 
   useEffect(() => {
+    if (window.innerWidth < 768) return;
+
     const ctx = gsap.context(() => {
       gsap.from(badgeRef.current, {
         y: 30,

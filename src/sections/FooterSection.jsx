@@ -16,6 +16,7 @@ const PortfolioFooter = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
+    if (window.innerWidth < 768) return;
     // Update time every second
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -25,6 +26,7 @@ const PortfolioFooter = () => {
   }, []);
 
   useEffect(() => {
+    if (window.innerWidth < 768) return;
     const ctx = gsap.context(() => {
       // Wave animation
       gsap.to(waveRef.current, {
@@ -174,7 +176,6 @@ const PortfolioFooter = () => {
                 <a
                   key={index}
                   href={link.href}
-                  
                   className="block text-gray-400 hover:text-pink-500 transition-colors duration-300 hover:translate-x-2 transform"
                   onMouseEnter={(e) => {
                     gsap.to(e.target, {
