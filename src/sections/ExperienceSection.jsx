@@ -79,7 +79,10 @@ const Experience = () => {
         <img src="/section.svg" alt="background" />
       </div>
       <div className="w-full h-full md:px-20 px-5">
-        <TitleHeader title="Past Experiences" sub="My Career Overview 💼" />
+        <TitleHeader title="Past Experiences" sub="My Career Overview 💼" 
+            aria-label="Past Experiences"
+        
+        />
 
         {/* Particle effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

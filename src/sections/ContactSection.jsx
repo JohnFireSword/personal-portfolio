@@ -135,7 +135,7 @@ const ContactPage = () => {
       ref={containerRef}
       id="contact"
       className="min-h-screen bg-[#0d1224] relative overflow-hidden flex items-center px-4 flex-col">
-      <TitleHeader title="Get In Touch With Me " sub="Contact Info ✉️" />
+      <TitleHeader title="Get In Touch With Me " sub="Contact Info ✉️" aria-label="Get In Touch With Me" />
 
       {/* Background Orbs */}
       <div className="absolute inset-0 pointer-events-none">

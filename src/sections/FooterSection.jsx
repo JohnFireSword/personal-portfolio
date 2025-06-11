@@ -131,10 +131,10 @@ const PortfolioFooter = () => {
               className="flex items-center space-x-4 cursor-pointer"
               onClick={scrollToTop}>
               <div className="w-32 h-32 rounded-full flex items-center justify-center text-2xl font-bold transform hover:scale-110 transition-transform duration-300">
-                <img src="/images/logo.png" alt="logo" />
+                <img src="/images/logo.png" alt="footer logo" />
               </div>
               <div>
-                <h3 className="text-2xl logo ">Giannis Giotis</h3>
+                <h2 className="text-2xl logo ">Giannis Giotis</h2>
                 <p className="text-gray-400">Front End & App Developer</p>
               </div>
             </div>
@@ -158,9 +158,9 @@ const PortfolioFooter = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6 text-white ">
+            <h3 className="text-lg font-semibold mb-6 text-white ">
               Quick Links
-            </h4>
+            </h3>
             <nav className="space-y-3 cursor-pointer">
               {navLinks.map((link, index) => (
                 <a
@@ -239,7 +239,7 @@ const PortfolioFooter = () => {
                   </div>
                 </a>
                 <a href="https://discord.com/users/xarxadeli" target="_blank">
-                  {" "}
+                
                   <div className="social-button">
                     <button className="relative w-12 h-12 rounded-full group">
                       <div className="floater w-full h-full absolute top-0 left-0 bg-[#8c9eff] rounded-full duration-300 group-hover:-top-8 group-hover:shadow-2xl"></div>
@@ -279,9 +279,9 @@ const PortfolioFooter = () => {
 
             {/* Newsletter Signup */}
             <div className="mt-8 space-y-3">
-              <h5 className="text-sm font-semibold text-gray-300">
+              <h4 className="text-sm font-semibold text-gray-300">
                 Stay Updated
-              </h5>
+              </h4>
               <div className="flex">
                 <input
                   type="email"

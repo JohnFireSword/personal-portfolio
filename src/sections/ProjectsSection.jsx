@@ -172,6 +172,7 @@ function ProjectsSection() {
         className="title-header-title"
         title="Recent Projects"
         sub="My Projects 📽️"
+        aria-label="Past Experiences"
       />
 
       <div className="max-w-7xl mx-auto px-4 py-8">

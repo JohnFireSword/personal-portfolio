@@ -4,6 +4,9 @@ const PhoneMockupVideo = ({ project, isActive }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+
+  const intersectionRef = useRef(null);
   const videoRef = useRef(null);
 
   // Reset states when project changes
@@ -12,6 +15,24 @@ const PhoneMockupVideo = ({ project, isActive }) => {
     setHasError(false);
     setIsPlaying(false);
   }, [project.id]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (intersectionRef.current) {
+      observer.observe(intersectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (isActive && videoRef.current && isLoaded && !hasError) {
@@ -49,14 +70,14 @@ const PhoneMockupVideo = ({ project, isActive }) => {
   };
 
   return (
-    <div className="relative max-w-xs mx-auto">
+    <div className="relative max-w-xs mx-auto" ref={intersectionRef}>
       {/* Phone Frame */}
       <div className=" ">
         {/* Screen */}
         <div className="rounded-[2rem] overflow-hidden">
           {/* Video Container */}
           <div className="relative w-full h-full">
-            {project.videoUrl && !hasError ? (
+            {project.videoUrl && !hasError && isInView ? (
               <>
                 <video
                   key={`video-${project.id}`}
