@@ -334,7 +334,6 @@ section {
   }
 }
 
-/* Hero text slider starts */
 .slide {
   display: inline-block;
   flex-direction: column;
@@ -374,7 +373,7 @@ section {
   }
 }
 
-/* Hero Text slider ends */
+
 
 .gradient-line {
   width: 2px;

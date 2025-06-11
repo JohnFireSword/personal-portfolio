@@ -13,7 +13,6 @@ const ContactPage = () => {
   const formRef = useRef();
   const orbsRef = useRef([]);
   const particlesRef = useRef([]);
-  const socialRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,7 +47,6 @@ const ContactPage = () => {
         }
       });
 
-      // Particles floating animation
       particlesRef.current.forEach((particle, index) => {
         if (particle) {
           gsap.to(particle, {
@@ -85,7 +83,7 @@ const ContactPage = () => {
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
-      // Success animation for button
+     
       gsap.fromTo(
         ".submit-btn",
         { scale: 1 },
@@ -101,12 +99,12 @@ const ContactPage = () => {
         }
       );
 
-      // Success state
+     
       setSubmitted(true);
       setSubmitMessage("Message sent successfully! 🎉");
       setFormData({ name: "", email: "", message: "" });
 
-      // Reset success state after 5 seconds
+    
       setTimeout(() => {
         setSubmitted(false);
         setSubmitMessage("");
@@ -115,7 +113,7 @@ const ContactPage = () => {
       console.log("EmailJS error", error);
       setSubmitMessage("Failed to send message. Please try again. ❌");
 
-      // Reset error message after 5 seconds
+    
       setTimeout(() => {
         setSubmitMessage("");
       }, 5000);
@@ -278,14 +276,17 @@ const ContactPage = () => {
                 ) : submitted ? (
                   <span className="block text-center">Message sent! ✅</span>
                 ) : (
-                  <>
-                    <span className="block group-hover:-translate-y-6 transition-transform duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)]">
-                      Send message
-                    </span>
-                    <span className="absolute top-6 left-0 right-0 group-hover:top-0 transition-all duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] text-center">
-                      Send message
-                    </span>
-                  </>
+                <>
+  <span className="block group-hover:-translate-y-6 transition-transform duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] flex items-center justify-center gap-2">
+    Send message
+    <img src="/images/send.png" alt="send" className="w-4 h-4 filter invert brightness-0" />
+  </span>
+  <span className="absolute top-6 left-0 right-0 group-hover:top-0 transition-all duration-[1.125s] ease-[cubic-bezier(0.19,1,0.22,1)] text-center flex items-center justify-center gap-2">
+    Send message
+    <img src="/images/send.png" alt="send" className="w-4 h-4 filter invert brightness-0" />
+  </span>
+</>
+
                 )}
               </div>
             </button>

@@ -47,7 +47,6 @@ const Hero = () => {
       }
     );
 
-   
     // Floating animation for lottie
     gsap.to(".lottie", {
       y: -10,
@@ -97,9 +96,8 @@ const Hero = () => {
             </div>
 
             <div className="subtitle">
-              <h2 className="text-md sm:text-lg md:text-xl text-pink-500 font-medium">
+              <h2 className="text-md sm:text-lg md:text-xl text-pink-300   font-medium">
                 Hi, I'm John and I deliver results that matter
-               
               </h2>
             </div>
 
@@ -112,22 +110,23 @@ const Hero = () => {
         </header>
 
         {/* Lottie Animation */}
-            <div className="lottie xl:w-4/5 w-full max-w-lg xl:max-w-none mt-12 xl:mt-0">
-            <div className="relative">
-              {/* Glow effect behind animation */}
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-3xl opacity-50"></div>
-              <AnimationLottie animationPath="/images/lotties/programming-lottie.json" />
+        <div className="lottie xl:w-4/5 w-full max-w-lg xl:max-w-none mt-12 xl:mt-0">
+          <div className="relative">
+            {/* Glow effect behind animation */}
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded-full blur-3xl opacity-50"></div>
+            <AnimationLottie animationPath="/images/lotties/programming-lottie.json" />
+          </div>
+        </div>
+        <div className="absolute hidden md:flex bottom-6 left-1/2 -translate-x-1/2 z-20">
+          <div className="flex flex-col items-center space-y-2">
+            <span className="text-sm text-gray-400 animate-pulse">
+              Scroll down
+            </span>
+            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>
-       <div className="absolute hidden md:flex bottom-6 left-1/2 -translate-x-1/2 z-20">
-  <div className="flex flex-col items-center space-y-2">
-    <span className="text-sm text-gray-400 animate-pulse">Scroll down</span>
-    <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-      <div className="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-bounce"></div>
-    </div>
-  </div>
-</div>
-    
+        </div>
       </div>
     </section>
   );

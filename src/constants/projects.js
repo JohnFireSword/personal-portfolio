@@ -119,25 +119,11 @@ export const projects = [
       desktop: "/images/mockups/tasteingreece.png",
     },
     mockup: "/images/mockups/tasteingreece.png",
-    demoUrl: "https://tasteingreece.com/en/",
-    githubUrl: "https://github.com/giannisgiotis/taste-in-greece", // Update with your actual GitHub repo
+    demoUrl: "https://tasteingreece.com/",
+   
     status: "Live",
-    color: "from-blue-500 to-emerald-600", // Changed to reflect Greek colors (blue like the flag/sea, green like olives)
-    accent: "#059669", // Emerald green accent
-    achievements: [
-      "Showcases authentic Greek culinary traditions",
-      "Responsive design optimized for mobile travelers",
-      "SEO-optimized for Greek food and travel searches",
-      "Bilingual platform serving international audience",
-    ],
-    challenges: [
-      "Organizing vast collection of traditional recipes",
-      "Creating engaging visual presentation of food content",
-      "Implementing effective SEO for culinary tourism",
-      "Balancing cultural authenticity with modern web design",
-    ],
-    impact:
-      "Connects international food enthusiasts with authentic Greek cuisine and promotes cultural tourism through gastronomy",
+    color: "from-blue-500 to-emerald-600", 
+    accent: "#059669", 
   },
   {
     id: 5,
